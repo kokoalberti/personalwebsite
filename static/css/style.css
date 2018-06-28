@@ -1,0 +1,217 @@
+
+/* **********************************************************************
+
+Fonts
+
+********************************************************************** */
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('sourcesanspro-regular-webfont.woff2') format('woff2'),
+         url('sourcesanspro-regular-webfont.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('sourcesanspro-semibold-webfont.woff2') format('woff2'),
+         url('sourcesanspro-semibold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'Droid Sans Mono';
+    src: url('droidsansmono-webfont.woff2') format('woff2'),
+         url('droidsansmono-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+strong {
+  font-synthesis: none;
+  font-weight:700;
+}
+pre {
+    font-size:0.75em;
+    line-height:1.1em;
+    border:1px solid #eee;
+    background-color:#fffcf7;
+}
+p code {
+    border-radius:5px;
+    font-size:0.8em;
+}
+
+
+/* **********************************************************************
+
+Body
+
+********************************************************************** */
+
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size:1em;
+    line-height:1.5em;
+	color:#000;
+}
+
+code {
+	font-family: 'Droid Sans Mono', monospace;
+    font-size:0.85em;
+	background-color:#f5f5f5 !important;
+    padding:3px;
+}
+
+
+/* **********************************************************************
+
+Header
+
+********************************************************************** */
+header {
+    border-bottom:1px dashed #ccc;
+    background-color:#f5f5f5;
+}
+header a {
+    font-synthesis: none;
+    font-weight:700;
+}
+header a:hover {
+    background-color:#f5f5f5;
+}
+
+a#home {
+    width:100%;
+    height:230px;
+    background-color:#fff;
+    display:block;
+    background-image:url('../gfx/bg-normal.svg');
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:center;
+}
+a#home:hover div {
+    width:100%;
+    height:100%;
+    background-image:url('../gfx/bg-home.svg');
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:center;
+}
+a#home span {
+    display:none;
+}
+body.home header h1 {
+    opacity:0;
+    position:absolute;
+    top:-999px;
+    font-weight:700;
+    font-synthesis: none;
+}
+div#header-image {
+    padding:0;
+    background-color:#fff;
+    border-bottom:1px solid #e5e5e5;
+    text-align:center;
+}
+div#header-image img {
+    height:240px;
+    margin:auto;
+    display:block;
+}
+body.article header h1 {
+    padding-top:0;
+    font-size:1.5em;
+    line-height:1.4em;
+}
+body.article header {
+    padding-bottom:10px;
+}
+body.article header p {
+    font-size:0.8em;
+    margin-bottom:5px;
+    margin-top:5px;
+}
+body.article h2 {
+    font-size:1.1em;
+    font-weight:700;
+    font-synthesis: none;
+    margin-bottom:0px;
+}
+
+/* **********************************************************************
+
+Article
+
+********************************************************************** */
+
+article p {
+    color:#000;
+    margin-top:12px;
+    margin-bottom:12px;
+}
+article {
+    padding-top:5px;
+    padding-bottom:5px;
+
+}
+article h1 {
+    font-size:1.2em;
+    margin-bottom:10px;
+    font-synthesis: none;
+    font-weight:700;
+}
+article a h1 span.heading {
+    padding:2px;
+    padding-left:6px;
+    padding-right:6px;
+    margin-left:-6px;
+}
+article a:hover h1 span.heading {
+    color:#015e93;
+    background-color:#f5f5f5;
+}
+article a:hover span.readmore {
+    display:inline;
+}
+span.readmore {
+    font-weight:700;
+    display:none;
+    color:#ddd;
+}
+
+
+/* **********************************************************************
+
+General Styles
+
+********************************************************************** */
+
+a {
+    text-decoration:none;
+    color:#0176ba;
+    outline:0;
+}
+a:hover {
+    color:#015e93;
+    background-color:#f5f5f5;
+}
+a:active {
+    text-decoration:none;
+    outline:0;
+}
+.content {
+    margin: 0 auto;
+    padding: 0 2em;
+    max-width: 800px;
+    font-size:1.4em;
+    line-height:1.5em;
+}
+
+
+
+
+

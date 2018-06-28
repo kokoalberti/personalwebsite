@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="header" style="height:100px;background-position:center center;">
+
+</div>
+<div id="intro">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" style="padding-top:15px;">
+                <p class='lead'>
+                    <a href="{{url_for('index') }}">kokoalberti.com</a>/projects
+                </p>
+                <p>
+                    Overview of some things I've been working on lately.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="container" style="margin-top:15px;">
+        <div class="row">
+            <div class="col-sm-7">
+                <div class="card card-orange">
+                      <div class="card-header">
+                        <i class="fa fa-map-o" aria-hidden="true"></i>
+                        Maptip
+                      </div>
+                      <img class="card-img-top" src="..." alt="Card image cap">
+                      <div class="card-block">
+                        <p class="card-text">
+                            Maptip is a geospatial search and recommendation engine for books and maps. 
+                            The concept is stupidly simple: pan your map to an area of interest and 
+                            it will give you a list of books and maps relevant for that area.</p>
+                      </div>
+                        <div class="card-footer">
+                                <a href="#">Check out the Maptip website</a>
+                        </div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+
+                <div class="card card-orange">
+                      <div class="card-header">
+                        <i class="fa fa-code" aria-hidden="true"></i>
+                        Flask-TrelloBoard Extension
+                      </div>
+                      <div class="card-block">
+                        <p class="card-text">
+                            The Flask-TrelloBoard extension allows you to source content for a Flask
+                            application from a Trello board. You'll be surprised how well a Trello
+                            board can function as a basic content management system.</p>
+                      </div>
+                        <div class="card-footer">
+                                <a href="#">View project page on Github</a>
+                        </div>
+                </div>
+
+            </div>
+        </div>
+    <div class="row">
+
+            <div class="col-sm-4">
+
+                <div class="card card-grey">
+                      <div class="card-header">
+                        <i class="fa fa-map-o" aria-hidden="true"></i>
+                        Old School Map Restorations
+                      </div>
+                      <div class="card-block">
+                        <p class="card-text">
+                            Bought some old maps that were looking a little worse for wear and 
+                            decided to fix them up a little.</p>
+                      </div>
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+
+                <div class="card card-grey">
+                      <div class="card-header">
+                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                        Motorbike Respray
+                      </div>
+                      <div class="card-block">
+                        <p class="card-text">
+                            Bought some old maps that were looking a little worse for wear and 
+                            decided to fix them up a little.</p>
+                      </div>
+
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+
+                <div class="card card-grey">
+                      <div class="card-header">
+                        <i class="fa fa-leaf" aria-hidden="true"></i>
+                        Lightweight Tent Build
+                      </div>
+                      <div class="card-block">
+                        <p class="card-text">
+                            Bought some old maps that were looking a little worse for wear and 
+                            decided to fix them up a little.</p>
+                      </div>
+
+                </div>
+            </div>
+    </div>
+</div>
+
+
+{% endblock content %}
