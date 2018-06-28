@@ -5,25 +5,8 @@ from flask import Flask, Markup, render_template, render_template_string
 from flask_flatpages import FlatPages, pygmented_markdown, pygments_style_defs
 from flask_frozen import Freezer
 
-DEBUG = True
-
-def prerender_jinja(text):
-    prerendered_body = render_template_string(Markup(text))
-    return pygmented_markdown(prerendered_body)
-
 app = Flask(__name__)
-
-app.config['DEBUG'] = True
-app.config['FLATPAGES_AUTO_RELOAD'] = True
-app.config['FLATPAGES_HTML_RENDERER'] = prerender_jinja
-app.config['FLATPAGES_ROOT'] = 'content'
-app.config['FLATPAGES_EXTENSION'] = '.md'
-app.config['FLATPAGES_MARKDOWN_EXTENSIONS'] = ['codehilite']
-
-#app.config['FREEZER_DESTINATION'] = 'build'
-#app.config['FREEZER_SKIP_EXISTING'] = True
-app.config['FREEZER_RELATIVE_URLS'] = True
-
+app.config.from_object('settings')
 
 pages = FlatPages(app)
 freezer = Freezer(app=app, log_url_for=True, with_static_files=True)
