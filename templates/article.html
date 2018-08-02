@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block title %}{{ article.title }}{% endblock %}
-
+{% block keywords %}{{ article.meta.keywords }}{% endblock %}
+{% block description %}{{ article.meta.description }}{% endblock %}
 {% block content %}
 <header>
 
@@ -19,7 +20,7 @@
       <span style="float:right;color:#666;">
         <tt>
         {% for tag in article.meta.tags %}
-          <a href="{{ url_for('tag', tag=tag) }}">#{{tag}}</a> 
+          <a href="{{ url_for('tag', tag=tag) }}" class='tag'>#{{tag}}</a> 
         {%endfor%}
 
       	</tt>

@@ -1,4 +1,6 @@
 title: Koko Alberti - Personal Website
+description: Personal website of Koko Alberti. I am a geographer with a keen interest in geoinformatics, web mapping, and remote sensing.
+keywords: 
 slug: index
 type: page
 status: published

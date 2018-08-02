@@ -3,6 +3,9 @@
 <html lang='en'>
     <head>
       <meta charset='UTF-8'/>
+      <meta name='viewport' content="width=device-width, initial-scale=1">
+      <meta name='description' content="{% block description %}{% endblock %}">
+      <meta name='keywords' content="koko alberti geo geography remote sensing geofolio {% block keywords %}{% endblock %}">
       <title>{% block title %}{% endblock %}</title>
       <link rel='stylesheet' href='{{ url_for("static", filename="css/normalize.css") }} '/>
       <link rel='stylesheet' href='{{ url_for("static", filename="css/style.css") }} '/>
