@@ -104,13 +104,6 @@ a#home:hover div {
 a#home span {
     display:none;
 }
-body.home header h1 {
-    opacity:0;
-    position:absolute;
-    top:-999px;
-    font-weight:700;
-    font-synthesis: none;
-}
 div#header-image {
     padding:0;
     background-color:#fff;
@@ -122,20 +115,20 @@ div#header-image img {
     margin:auto;
     display:block;
 }
-body.article header h1 {
+header h1 {
     padding-top:0;
     font-size:1.5em;
     line-height:1.4em;
 }
-body.article header {
+header {
     padding-bottom:10px;
 }
-body.article header p {
+header p {
     font-size:0.8em;
     margin-bottom:5px;
     margin-top:5px;
 }
-body.article h2 {
+h2 {
     font-size:1.1em;
     font-weight:700;
     font-synthesis: none;
