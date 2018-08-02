@@ -3,7 +3,6 @@
 {% block title %}{{ article.title }}{% endblock %}
 
 {% block content %}
-<body class="article">
 <header>
 
   <div id="header-image"><a id="home" href="{{ url_for('index') }}"><div><span>Back to homepage</span></div></a> </div>
@@ -16,21 +15,34 @@
     <h1>{{ article.title }}</h1>
 
     <p style="color:#666;">
-      <code>Published {{ article.date.strftime("%Y-%m-%d") }}</code>
-      <span style="float:right;color:#666;"><code>
+      <tt>Published {{ article.date.strftime("%Y-%m-%d") }}</tt>
+      <span style="float:right;color:#666;">
+        <tt>
         {% for tag in article.meta.tags %}
           <a href="{{ url_for('tag', tag=tag) }}">#{{tag}}</a> 
         {%endfor%}
 
-      	</code></span>
+      	</tt>
+      </span>
       
     </p>
   </div>
 </header>
 <div class="content">
   <article>
+    <!--
+    {% if 'geofolio' in article.meta.tags %}
+    <p style='color:#999;'>
+      
+      Shameless plug ahead... This article was written as part of building <a href="https://geofolio.org">Geofolio</a>, a project I'm working that aims to make 
+      geodata available and understandable for everyone. Have a look and let me know what you think!
+      
+    </p>
+    <hr/>
+    {% endif %}
+  -->
   	{{ article }}
+    }
   </article>
 </div>
-</body>
 {% endblock %}
