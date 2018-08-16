@@ -15,9 +15,9 @@ We're going to run a benchmark to test compression ratio and read/write speeds f
 
 ## Test files
 
-Three test files with commonly used data types have been created for this test: ``byte.tif``, ``int16.tif``, and ``float32.tif``. Each file has been cropped to be around 50Mb each in its uncompressed condition. See the notes and comments section for a download link and more information. Just to give an impression, this is what they look like zoomed out:
+Three test files with commonly used data types have been created for this test: ``byte.tif``, ``int16.tif``, and ``float32.tif``. Each file has been cropped to be around 50Mb each in its uncompressed condition. See the notes and comments section for a download link and more information. Just to give an impression, this is what the Byte, Int16, and float32 images look like zoomed out:
 
-![alt text](./image_samples.png)
+![Three sample images](./image_samples.png)
 
 It is important to mention here that these are just test files, and that your results will vary depending on the type of data you're working with. So interpret the results not as the absolute truth, but rather as an indication and a guideline of what the tradeoffs between the different algorithms and configuration options are. Experiment with your own data to find out what works best for you.
 
@@ -64,7 +64,7 @@ The ``gdal_translate`` command is repeated by ``perf stat`` with the relevant cr
 
 The write tests measure the time required to write each of the 50Mb files with the corresponding compression settings. The speed in the table below is relative to original file size, so it is an indication of how many Mb of raw data can be compressed in one second. For example, if the 50Mb file was written in 0.5 seconds, a speed of 100Mb/s is reported below. The results are as follows:
 
-![alt text](./write_results.png)
+![Results table of write speed](./write_results.png)
 
 A few observations worth noting:
 
@@ -78,7 +78,7 @@ A few observations worth noting:
 
 Here is the full results table for the compression ratio tests:
 
-![alt text](./ratio_results.png)
+![Results table of the compression ratio](./ratio_results.png)
 
 This also yielded some interesting observations:
 
@@ -92,7 +92,7 @@ This also yielded some interesting observations:
 
 Here is the full results table for the read speed tests:
 
-![alt text](./read_results.png)
+![Results table for the read speed](./read_results.png)
 
 * ZSTD lives up to its reputation for being speedy, performing better than both LZW and Deflate, which are comparable in terms of decompression speed.
 * Using Z-levels in the compression does not seem to influence decompression speeds much.
@@ -108,7 +108,7 @@ When the creation option ``TILING=YES`` is enabled, data is stored and compresse
 
 For accessing subsets though, tiling can make a difference. For example, the grids below show an image with 100 equally sized tiles (left) and the same number of strips (right). To read data from the red subset, the yellow area will have to be decompressed. In the tiled image we will have to decompress only 9 tiles, whereas in the stripped image on the right we'll have to decompress around twice as many strips. 
 
-![alt text](./tiled_vs_stripped.png)
+![Example to explain tiling vs. striped](./tiled_vs_stripped.png)
 
 Creating a tiled image may take a little bit longer than one without tiles, so it's best to experiment and check for yourself whether tiling works for you.
 
@@ -118,7 +118,7 @@ LERC is available from GDAL 2.4 onwards, and is designed to obtain a better comp
 
 As a quick experiment I ran the benchmark again on our floating point dataset with ``COMPRESS=LERC_DEFLATE``, gradually increasing the ``MAX_Z_ERROR`` to see the effect on the compression ratio. Remember that in our original results, the best possible compression ratio achieved with Deflate and a floating point predictor was 1.64. The results are interesting to say the least:
 
-![alt text](./ratio_results_lerc.png)
+![Results table for LERC compression ratio](./ratio_results_lerc.png)
 
 If we reduce the precision to within even 1mm of elevation using ``MAX_Z_ERROR=0.001``, the compression ratio already jumps to 2.07, that's a space saving of more than 50%. The ratio increases rapidly as the precision is reduced, and at a precision of 1 meter with ``MAX_Z_ERROR=1.0``, the space saving is above 80% with a compression ratio of 5.3. So, if you're using floating point data, take a minute to think about what precision is required for your particular application. If it's anything above zero, give LERC some thought.
 
