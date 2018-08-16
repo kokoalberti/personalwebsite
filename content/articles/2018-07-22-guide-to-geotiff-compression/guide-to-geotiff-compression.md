@@ -7,7 +7,7 @@ date: 2018-08-16
 
 With the fast ZSTD compression (GDAL 2.3 and above) and Limited Error Raster Compression (GDAL 2.4) becoming available in our favourite geospatial toolkit, I thought it would be interesting to run some benchmarks and write a guide on compressing and optimizing GeoTIFF files using the latest versions of GDAL. 
 
-Especially if you're working with GDAL's [virtual file systems](https://www.gdal.org/gdal_virtual_file_systems.html) and [cloud-optimized GeoTIFFs](https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF), deciding on the right compression algorithm and creation options can make a significant difference to performance indicators such as file size, processing time, and the amount of time and bandwidth consumed when accessing geospatial data over a network.  
+Especially if you're working with GDAL's [virtual file systems](https://www.gdal.org/gdal_virtual_file_systems.html) and [cloud-optimized GeoTIFFs](https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF), deciding on the right compression algorithm and creation options can make a significant difference to indicators such as file size, processing time, and the amount of time and bandwidth consumed when accessing geospatial data over a network.  
 
 # What's the plan
 
@@ -114,7 +114,7 @@ Creating a tiled image may take a little bit longer than one without tiles, so i
 
 ## Limited Error Raster Compression (LERC)
 
-LERC is available from GDAL 2.4 onwards, and is designed to obtain a better compression ratio at the expense of the precision the data. The key feature is that LERC lets the user, using the ``MAX_Z_ERROR`` creation option, define exactly how lossy the algorithm is allowed to be. LERC can be used standalone as ``COMPRESS=LERC`` or in combination with ZSTD or Deflate as ``COMPRESS=LERC_ZSTD`` and  ``COMPRESS=LERC_DEFLATE``.
+LERC is available from GDAL 2.4 onwards, and is designed to obtain a better compression ratio at the expense of the precision of the data. The key feature is that LERC lets the user, using the ``MAX_Z_ERROR`` creation option, define exactly how lossy the algorithm is allowed to be. LERC can be used standalone as ``COMPRESS=LERC`` or in combination with ZSTD or Deflate as ``COMPRESS=LERC_ZSTD`` and  ``COMPRESS=LERC_DEFLATE``.
 
 As a quick experiment I ran the benchmark again on our floating point dataset with ``COMPRESS=LERC_DEFLATE``, gradually increasing the ``MAX_Z_ERROR`` to see the effect on the compression ratio. Remember that in our original results, the best possible compression ratio achieved with Deflate and a floating point predictor was 1.64. The results are interesting to say the least:
 
@@ -126,7 +126,7 @@ If we reduce the precision to within even 1mm of elevation using ``MAX_Z_ERROR=0
 
 Overviews are duplicate versions of your original data, but resampled to a lower resolution. This is useful when you're rendering or reading zoomed out versions of your data, and there is too much data to be able to calculate these overviews on the fly. 
 
-The easiest way to add overviews to a GeoTIFF is to use the [``gdaladdo``](https://www.gdal.org/gdaladdo.html) utility. The overviews themselves can also be compressed with various algorithms and predictors, much in the same way as your original dataset. In addition to this, you need to decide what resampling algorithm to use in order to convert many high resolution values to a single low resolution value for use in the overview. Here too there are different methods: fast and imprecise such as nearest neighbour, and more complicated ones such as average or cubicspline. Check the docs and experiment.
+The easiest way to add overviews to a GeoTIFF is to use the [``gdaladdo``](https://www.gdal.org/gdaladdo.html) utility. Because the overview are in fact datasets as well, they can also be compressed with various algorithms and predictors, much in the same way as your original dataset. In addition to this, you need to decide what resampling algorithm to use in order to convert many high resolution values to a single low resolution value for use in the overview. Here too there are different methods: fast and imprecise such as nearest neighbour, and more complicated ones such as average or cubicspline. Check the [gdaladdo documentation](https://www.gdal.org/gdaladdo.html) and experiment.
 
 ## NUM_THREADS
 
@@ -142,7 +142,7 @@ The [``GDAL_CACHEMAX``](https://trac.osgeo.org/gdal/wiki/ConfigOptions) configur
 
 ## Compressing Imagery
 
-While compressing imagery is outside of the scope of this article, I wanted to mention it nevertheless to be complete. When the data you're trying to compress consists of imagery (aerial photographs, true-color satellite images, or colored maps) you can use lossy algorithms such as JPEG to obtain a much improved compression ratio. A lossy algorithm such as JPEG is not suitable though for compressing data where the precision is of imporance, which is why I skipped it here in this benchmark. If you're interested though, have a look at the article by Paul Ramsey for some results and best practices on [compressing GeoTIFFs with JPEG compression](http://blog.cleverelephant.ca/2015/02/geotiff-compression-for-dummies.html).
+While compressing imagery is outside of the scope of this article, I wanted to mention it nevertheless to be complete. When the data you're trying to compress consists of imagery (aerial photographs, true-color satellite images, or colored maps) you can use lossy algorithms such as JPEG to obtain a much improved compression ratio. A lossy algorithm such as JPEG is not suitable though for compressing data where the precision is important, which is why I skipped it here in this benchmark. If you're compressing imagery, have a look at the article by Paul Ramsey for some results and best practices on [compressing GeoTIFFs with JPEG compression](http://blog.cleverelephant.ca/2015/02/geotiff-compression-for-dummies.html).
 
 # Conclusions
 
