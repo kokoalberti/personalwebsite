@@ -135,12 +135,6 @@ body.article header p {
     margin-bottom:5px;
     margin-top:5px;
 }
-body.article h2 {
-    font-size:1.1em;
-    font-weight:700;
-    font-synthesis: none;
-    margin-bottom:0px;
-}
 
 /* **********************************************************************
 
@@ -159,10 +153,13 @@ article {
 
 }
 article h1 {
-    font-size:1.2em;
+    font-size:1.25em;
     margin-bottom:10px;
     font-synthesis: none;
     font-weight:700;
+}
+article h2 {
+    font-size:1.05em;
 }
 article a h1 span.heading {
     padding:2px;
@@ -176,6 +173,40 @@ article a:hover h1 span.heading {
 }
 article a:hover span.readmore {
     display:inline;
+}
+article img {
+    display: block;
+    margin: 0 auto;
+}
+
+article hr {
+    height:0px;
+    border-bottom:0px;
+}
+
+article small {
+    font-size:0.7em;
+    color:#ccc;
+}
+
+article p.notes-and-comments, ul.notes-and-comments li, h2.notes-and-comments {
+    width:60%;
+    color:#666;
+    font-size:0.85em;
+    line-height:1.5em;
+}
+article div.notes-and-comments h2 {
+    margin:0;
+}
+article div.notes-and-comments {
+    border-top:2px dotted #aaa;
+    border-bottom:0px dotted #aaa;
+    padding-top:20px;
+    padding-bottom:20px;
+    margin-top:100px;
+    margin-bottom:20px;
+    font-style:oblique;
+
 }
 span.readmore {
     font-weight:700;
@@ -210,7 +241,6 @@ a:active {
     font-size:1.4em;
     line-height:1.5em;
 }
-
 
 
 
