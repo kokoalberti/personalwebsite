@@ -1,7 +1,8 @@
 import sys
 import click
+import os
 
-from flask import Flask, Markup, render_template, render_template_string
+from flask import Flask, Markup, render_template, render_template_string, send_from_directory, current_app, safe_join
 from flask_flatpages import FlatPages, pygmented_markdown, pygments_style_defs
 from flask_frozen import Freezer
 
@@ -48,6 +49,14 @@ def index():
 def article(slug):
     article = get_pages_by_slug(slug)
     return render_template('article.html', **locals())
+
+@app.route('/articles/<slug>/<path:filename>')
+def article_static(slug, filename):
+    article = get_pages_by_slug(slug)
+    directory = os.path.dirname(safe_join(current_app.root_path, current_app.config.get("FLATPAGES_ROOT"), article.path))
+    print(directory)
+    print(filename)
+    return send_from_directory(directory, filename)
 
 @app.route('/tag/<tag>/')
 def tag(tag):

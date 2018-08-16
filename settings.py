@@ -13,7 +13,7 @@ FLATPAGES_AUTO_RELOAD = True
 FLATPAGES_HTML_RENDERER = prerender_jinja
 FLATPAGES_ROOT = 'content'
 FLATPAGES_EXTENSION = '.md'
-FLATPAGES_MARKDOWN_EXTENSIONS = ['codehilite']
+FLATPAGES_MARKDOWN_EXTENSIONS = ['codehilite', 'extra']
 
 # Settings for Frozen-Flask
 #FREEZER_DESTINATION = 'build'
