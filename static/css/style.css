@@ -174,7 +174,7 @@ article a:hover span.readmore {
 }
 article img {
     display: block;
-    margin: 0 auto;
+    margin: 25px auto;
 }
 
 article hr {
