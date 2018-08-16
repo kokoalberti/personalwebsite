@@ -5,7 +5,6 @@ tags: [geo, geofolio, gdal, geotiff, compression]
 status: published
 date: 2018-08-16
 
-
 With the fast ZSTD compression (GDAL 2.3 and above) and Limited Error Raster Compression (GDAL 2.4) becoming available in our favourite geospatial toolkit, I thought it would be interesting to run some benchmarks and write a guide on compressing and optimizing GeoTIFF files using the latest versions of GDAL. 
 
 Especially if you're working with GDAL's [virtual file systems](https://www.gdal.org/gdal_virtual_file_systems.html) and [cloud-optimized GeoTIFFs](https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF), deciding on the right compression algorithm and creation options can make a significant difference to performance indicators such as file size, processing time, and the amount of time and bandwidth consumed when accessing geospatial data over a network.  

@@ -1,6 +1,7 @@
 import sys
 import click
 import os
+import glob
 
 from flask import Flask, Markup, render_template, render_template_string, send_from_directory, current_app, safe_join
 from flask_flatpages import FlatPages, pygmented_markdown, pygments_style_defs
@@ -54,8 +55,6 @@ def article(slug):
 def article_static(slug, filename):
     article = get_pages_by_slug(slug)
     directory = os.path.dirname(safe_join(current_app.root_path, current_app.config.get("FLATPAGES_ROOT"), article.path))
-    print(directory)
-    print(filename)
     return send_from_directory(directory, filename)
 
 @app.route('/tag/<tag>/')
@@ -64,7 +63,17 @@ def tag(tag):
     article = ''
     return render_template('tag.html', **locals())
     
-    
+@freezer.register_generator
+def article_static_files():
+    for p in pages:
+        directory = os.path.dirname(safe_join(current_app.root_path, current_app.config.get("FLATPAGES_ROOT"), p.path))
+        for static_file in glob.glob(os.path.join(directory, "*.png")):
+            yield 'article_static', {'slug':p.meta.get('slug'), 'filename':os.path.basename(static_file)}
+
+@app.cli.command()
+def testfreeze():
+    freezer.freeze()
+
 @app.cli.command()
 def freeze():
     print("Freezing...")
