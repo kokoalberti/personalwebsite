@@ -78,6 +78,10 @@ def sitemap():
 def robots():
     server_name = current_app.config.get("SITEMAP_SERVER_NAME")
     return Response(render_template('robots.txt', **locals()), mimetype='text/plain')
+    
+@app.route('/google0e9a29b6ad0a512a.html')
+def google_verification():
+    return render_template('google0e9a29b6ad0a512a.html')
 
 @freezer.register_generator
 def other_static_files():
@@ -86,6 +90,7 @@ def other_static_files():
     """
     yield 'robots', {}
     yield 'sitemap', {}
+    yield 'google_verification', {}
     
 @freezer.register_generator
 def article_static_files():
