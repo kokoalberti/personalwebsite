@@ -1,5 +1,6 @@
 # General settings
 DEBUG = True
+SITEMAP_SERVER_NAME = 'https://kokoalberti.com'
 
 # Some hacks to allow using Jinja markup within the Markdown templates
 from flask_flatpages import pygmented_markdown

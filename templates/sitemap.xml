@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+      <loc>{{server_name}}{{ url_for('index') }}</loc>
+      <lastmod>{{ index.date.strftime("%Y-%m-%d") }}</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+   </url>
+   {% for article in articles %}
+   <url>
+      <loc>{{server_name}}{{ url_for('article', slug=article.meta.slug) }}</loc>
+      <lastmod>{{ article.date.strftime("%Y-%m-%d") }}</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   {% endfor %}
+   {% for tag in tags %}
+   <url>
+      <loc>{{server_name}}{{ url_for('tag', tag=tag) }}</loc>
+      <changefreq>monthly</changefreq>
+      <priority>0.4</priority>
+   </url>
+   {% endfor %}
+</urlset> 

@@ -3,7 +3,7 @@ import click
 import os
 import glob
 
-from flask import Flask, Markup, render_template, render_template_string, send_from_directory, current_app, safe_join
+from flask import Flask, Markup, Response, render_template, render_template_string, send_from_directory, current_app, safe_join
 from flask_flatpages import FlatPages, pygmented_markdown, pygments_style_defs
 from flask_frozen import Freezer
 
@@ -63,21 +63,42 @@ def tag(tag):
     article = ''
     return render_template('tag.html', **locals())
     
+@app.route('/sitemap.xml')
+def sitemap():
+    server_name = current_app.config.get("SITEMAP_SERVER_NAME")
+    articles = get_pages_sorted()
+    index = get_pages_by_slug('index')
+    tags = set()
+    for article in articles:
+        for tag in article.meta.get("tags",[]):
+            tags.add(tag)
+    return Response(render_template('sitemap.xml', **locals()), mimetype='application/xml')
+    
+@app.route('/robots.txt')
+def robots():
+    server_name = current_app.config.get("SITEMAP_SERVER_NAME")
+    return Response(render_template('robots.txt', **locals()), mimetype='text/plain')
+
+@freezer.register_generator
+def other_static_files():
+    """
+    Register the URLs for the robots and sitemap routes to frozen flask
+    """
+    yield 'robots', {}
+    yield 'sitemap', {}
+    
 @freezer.register_generator
 def article_static_files():
+    """
+    Register the URLS for article's static files (PNG images only for now) to
+    frozen flask.
+    """
     for p in pages:
         directory = os.path.dirname(safe_join(current_app.root_path, current_app.config.get("FLATPAGES_ROOT"), p.path))
         for static_file in glob.glob(os.path.join(directory, "*.png")):
             yield 'article_static', {'slug':p.meta.get('slug'), 'filename':os.path.basename(static_file)}
 
 @app.cli.command()
-def testfreeze():
-    freezer.freeze()
-
-@app.cli.command()
 def freeze():
     print("Freezing...")
     freezer.freeze()
-#
-#if __name__ == '__main__':
-#    freezer.freeze()
