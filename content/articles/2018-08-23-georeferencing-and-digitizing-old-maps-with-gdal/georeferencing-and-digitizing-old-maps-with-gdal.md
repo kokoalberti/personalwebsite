@@ -103,7 +103,7 @@ Therefore we'll use ``gdalwarp`` to reproject the image. The ``-tps`` option for
 
 The ``-s_srs`` is the spatial reference system that our GCP coordinates were in, and the ``-t_srs`` option defines the spatial reference system that we want our output map to be in. In our case want it in pseudo-mercator, which has an EPSG code of 3857. After running the command, the ``map-reprojected.tif`` file is now properly georeferenced, as we can see when we load it in QGIS on top of another layer:
 
-![Map sample](./map-georeferenced.png)
+![Map sample](./map-georeferenced.jpg)
 
 ## Tweaking the output resolution and resampling method
 
