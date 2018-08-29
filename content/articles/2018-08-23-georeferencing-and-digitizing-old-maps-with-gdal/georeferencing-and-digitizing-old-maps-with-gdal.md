@@ -5,9 +5,9 @@ tags: [geo, gdal, georeferencing]
 status: published
 date: 2018-08-23
 
-While cleaning up some USB drives I had lying around I ran into some scanned images of old wartime maps of my home town The Hague. I quite like the cartographic style of them, and decided to digitize the maps using GDAL and turn it into a web map. This article explains how to do that, compares some of the different interpolation options, and shows how to make web tiles out of the resulting images.
+While cleaning up USB drives I had lying around in boxed of old stuff I ran into some scanned images of wartime maps of my home town The Hague. I quite like the cartographic style of them, and decided to digitize the maps using GDAL and turn them into a web map. This article explains how to do that, compares some of the different interpolation options, and shows how to make web tiles out of the resulting images.
 
-The original scanned image is 7000 by 5263 pixels, and it shows quite a bit of detail in a vintage high-contrast cartographic style that you see more often in wartime maps: 
+The original scanned image is 7000 by 5263 pixels, and it shows great details in a vintage high-contrast cartographic style that you see more often in wartime maps: 
 
 ![Map sample](./map-sample.jpg)
 
@@ -122,7 +122,7 @@ The ``-tr`` option is important as it defines the resolution of the output map. 
 
 Pick a sensible target resolution depending on the scale of your map. A resolution of 1m on a map of a very large area is going to create a huge file and take a very long time! Keep in mind that every time you half the cell size your file will become four times bigger, and vice versa.
 
-The resampling method defined in the ``-r`` option also affects image quality. It's best to experiment a bit to see what works best for your map and target resolution. Nearest neighbour is usually fast but somewhat imprecise, and the others a bit more blurry. Here are some tests on our map with a 5 meter resolution:
+The resampling method defined in the ``-r`` option also affects image quality. It's best to experiment a bit to see what works best for your map and target resolution. Nearest neighbour is usually fast but a bit grainy or gritty, and the others a bit more blurry. Here are some tests od the resampling methods on our map with a 5 meter resolution:
 
 <table style="width:100%;margin:auto;font-size:0.6em;text-align:center;">
 <tr><td><code>-r near</code></td><td><code>-r bilinear</code></td><td><code>-r cubic</code></td><td><code>-r cubicspline</code></td><td><code>-r lanczos</code></td></tr>
@@ -160,16 +160,18 @@ Setting the ``PHOTOMETRIC=YCBCR`` creation option makes GDAL store the image in 
 <tr><td><code>11Mb</code></td><td><code>18Mb</code></td><td><code>26Mb</code></td><td><code>36Mb</code></td><td><code>141Mb</code></td></tr>
 </table>
 
-The effect on image quality is minimal, whereas the reduction in file size is rather significant. In other parts of the image I did notice some artifacts at the lower levels, so I decided to use ``JPEG_QUALITY=50`` for the final map.
+The effect on image quality is not obvious, whereas the reduction in file size is rather significant. In other parts of the image I did notice some artifacts at the lower levels, so I decided to use ``JPEG_QUALITY=50`` for the final map. The reason for the minimal effect of the compression could be that the resolution is quite high, even the samples above are zoomed out a little bit already.
 
 ## Tiling
 
-One more optimization we can do to our image in this processing step is to add tiling to it. Tiling helps to speed up access to the file, and can be added to the ``gdalwarp`` command with:
+One more optimization we can do to our image in this processing step is to add tiling to it. Enabling tiling will store the data in tiles (square blocks) rather than strips, which helps to speed up access to the file. Tiling can be added to the ``gdalwarp`` command with:
 
     :::sh
     -co TILED=YES
 
-Summing it all up, our final ``gdalwarp`` command is now:
+## The final warp
+
+Summing it all up, our final ``gdalwarp`` command creates a reprojected map of 14866 by 14044 pixels around 13Mb in size:
 
     :::sh
     gdalwarp \
@@ -181,14 +183,16 @@ Summing it all up, our final ``gdalwarp`` command is now:
         -tr 2 -2 \
         -co COMPRESS=JPEG \
         -co PHOTOMETRIC=YCBCR \
-        -co JPEG_QUALITY=10 \
+        -co JPEG_QUALITY=50 \
         -co TILED=YES \
         map-with-gcps.tif \
         map-reprojected.tif
 
 ## Overviews
 
-The last step is to add overviews, which are low resolution versions of the original image that can be used when rendering zoomed out versions of the map. In such a case the overviews will be loaded rather than having to calculate a zoomed out version of the map on the fly. Overviews can be added using the ``gdaladdo`` utility. We'll create five overview levels (2, 4, 8, 16, and 32) and specify the same compression parameters for the overview images as we used for the main image:
+The last step is to add overviews, which are low resolution versions of the original image that can be used when rendering zoomed out parts (such as tiles) of the map. In these scenarios the overviews will be loaded rather than calculating a zoomed out version of a high resolution image on the fly. 
+
+Overviews can be added using the ``gdaladdo`` utility. We'll create five overview levels (2, 4, 8, 16, and 32) and specify the similar compression parameters for the overview images as we used for the main image:
 
     :::sh
     gdaladdo \
@@ -204,7 +208,11 @@ The overviews will be added internally to the GeoTIFF file, so no new files will
 
 Our georeferenced file is pretty much finished at this point and can be used efficiently in QGIS, Mapserver, or for any other type of processing with GDAL. 
 
-While we could serve the map using Mapserver, I don't want to have to maintain a Mapserver instance somewhere, so instead prefer to make static tiles out of the file and host the tiles on Amazon S3. For this we need to chop the file into small tiles which can then be loaded in a map viewer like Leaflet. There is a GDAL utility called ``gdal2tiles.py`` that we can use, but that doesn't generate JPEG tiles and it's a little  difficult to tell what zoom level of tiles we should use. Instead, we can write a quick Python script ourselves to create the tiles in JPEG format and estimate some sensible defaults for the zoom levels we need to generate:
+To make a web map we could serve the map using Mapserver now, but I prefer to make static tiles from the file and host the tiles on Amazon S3. That way I can just upload them there and they'll always work without having to keep any servers running. 
+
+For this to work we need to chop the file into small tiles which can then be loaded in a map viewer like Leaflet. There is a GDAL utility called ``gdal2tiles.py``, but that doesn't generate JPEG tiles (only PNG tiles, which can get quite large for imagery) and it's a little difficult to tell what zoom level of tiles we should use to match the extent and resolution of our file. 
+
+Because there are some nice Python modules (mercantile, tilematrix) to help us with tile maths it's not too difficult to write a Python script ourselves to create the tiles in JPEG format and estimate some sensible defaults for the zoom levels:
 
     :::python
     """
