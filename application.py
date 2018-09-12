@@ -107,9 +107,7 @@ def article_static_files():
             files.extend(glob.glob(os.path.join(directory, "**", pattern), recursive=True))
 
         for static_file in files:
-            print(static_file)
             filename = static_file.replace(directory+'/', "")
-            print(filename)
             yield 'article_static', {'slug':p.meta.get('slug'), 'filename':filename}
 
 @app.cli.command()
