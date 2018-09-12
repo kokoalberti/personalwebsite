@@ -98,10 +98,19 @@ def article_static_files():
     Register the URLS for article's static files (PNG images only for now) to
     frozen flask.
     """
+    static_patterns = ("*.png", "*.jpg")
     for p in pages:
         directory = os.path.dirname(safe_join(current_app.root_path, current_app.config.get("FLATPAGES_ROOT"), p.path))
-        for static_file in glob.glob(os.path.join(directory, "*.png")):
-            yield 'article_static', {'slug':p.meta.get('slug'), 'filename':os.path.basename(static_file)}
+        files = []
+        
+        for pattern in static_patterns:
+            files.extend(glob.glob(os.path.join(directory, "**", pattern), recursive=True))
+
+        for static_file in files:
+            print(static_file)
+            filename = static_file.replace(directory+'/', "")
+            print(filename)
+            yield 'article_static', {'slug':p.meta.get('slug'), 'filename':filename}
 
 @app.cli.command()
 def freeze():
