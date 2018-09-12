@@ -3,7 +3,7 @@ type: article
 slug: georeferencing-and-digitizing-old-maps-with-gdal
 tags: [geo, gdal, georeferencing]
 status: published
-date: 2018-08-23
+date: 2018-09-12
 
 While cleaning up some old USB drives I found several scanned images of wartime maps of my home town The Hague. I quite like the cartographic style and decided to digitize the maps using GDAL and turn them into a web map. This article explains how to do that, compares some of the different GDAL options, and shows how to make web tiles and a map viewer using Leaflet. 
 
@@ -475,12 +475,14 @@ In our case the final map can be viewed at:
 
 ## A few other tips
 
-Feel free to skip the whole S3 section altogether and just upload the index file and tiles to a hosting account of your choice, it should work just as well or even better when you're using a content-delivery network (CDN).
+Feel free to skip the whole S3 section altogether and just upload the index file and tiles to a hosting account of your choice, it should work just as well or even a little faster when you're using a content-delivery network (CDN).
 
-Because the map as we've made it now will always take up the full screen, it can be really easily embedded in other HTML pages using an ``<iframe>``, that's probably a bit simpler than copying all the Leaflet code and styles into any page you want to show the map on.
+Because the map as we've made it now will always take up the full screen, it can be embedded quite easily in other HTML pages using an ``<iframe>``, that's probably faster than copying all the Leaflet code and styles into any page you want to show the map on. This snippet will do the job:
 
      <iframe src="https://s3.eu-central-1.amazonaws.com/old-maps/the-hague-1944/index.html"
              style="width:100%;height:350px;border:none;"></iframe> 
+
+And embed it across the full width of the page and with a fixed height:
 
 <iframe src="https://s3.eu-central-1.amazonaws.com/old-maps/the-hague-1944/index.html?noscrollzoom"
              style="width:100%;height:350px;border:none;"></iframe>
