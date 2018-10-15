@@ -24,6 +24,7 @@ header p {
   <div id="header-image"><a id="home" href="{{ url_for('index') }}"><div><span>Back to homepage</span></div></a> </div>
 
   <div class="content">
+
     <h1>{{ index.meta.title }}</h1>
     {{ index }}
   </div>
@@ -34,7 +35,7 @@ header p {
     <a href="{{ url_for('article', slug=article.slug) }}">
       <h1><span class="heading">{{ article.title }}</span> <span class="readmore">+++</span></h1>
     </a>
-    {{ article.body | truncate(300) }}
+    <tt>{{ article.date }} / </tt>{{ article.body | truncate(300) }}
   </article>
   {% endfor %}
  </div>
