@@ -14,6 +14,14 @@
       <priority>0.8</priority>
    </url>
    {% endfor %}
+   {% for page in pages %}
+   <url>
+      <loc>{{server_name}}{{ url_for('page', slug=page.meta.slug) }}</loc>
+      <lastmod>{{ page.date.strftime("%Y-%m-%d") }}</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   {% endfor %}
    {% for tag in tags %}
    <url>
       <loc>{{server_name}}{{ url_for('tag', tag=tag) }}</loc>

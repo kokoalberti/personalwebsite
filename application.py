@@ -57,6 +57,11 @@ def article_static(slug, filename):
     directory = os.path.dirname(safe_join(current_app.root_path, current_app.config.get("FLATPAGES_ROOT"), article.path))
     return send_from_directory(directory, filename)
 
+@app.route('/pages/<slug>/')
+def page(slug):
+    page = get_pages_by_slug(slug)
+    return render_template('page.html', **locals())
+
 @app.route('/tag/<tag>/')
 def tag(tag):
     articles = get_pages_by_tags(tag)
@@ -67,6 +72,7 @@ def tag(tag):
 def sitemap():
     server_name = current_app.config.get("SITEMAP_SERVER_NAME")
     articles = get_pages_sorted()
+    pages = get_pages_sorted(page_type='page')
     index = get_pages_by_slug('index')
     tags = set()
     for article in articles:
