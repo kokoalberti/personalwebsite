@@ -124,7 +124,11 @@ This results in a nice satellite composite that matches up with our other datase
 
 One issue that I encounted was that some of the glaciers are misrepresented as nodata in the tiles, perhaps due to their similarity to clouds, resulting in nodata pixels becoming black on the glaciers. This didn't look so good and was circumvented by setting `-wo INIT_DEST=255`, which initializes the new raster with values of 255, making all nodata pixels white instead.
 
-I have also created a high resolution version of the satellite map using source tiles at zoom level 13, which is listed in the downloads section.
+I have also created a high resolution version (left) of the satellite map using source tiles at zoom level 13, which shows a bit more features than the low-res version (right):
+
+![Sample](./hires_lowres.jpg)
+
+<center><a href="#">Download full high resolution image GeoTIFF (25Mb)</a></center>
 
 # Creating maps for a Garmin GPS receiver
 
