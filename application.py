@@ -104,7 +104,7 @@ def article_static_files():
     Register the URLS for article's static files (PNG images only for now) to
     frozen flask.
     """
-    static_patterns = ("*.png", "*.jpg")
+    static_patterns = ("*.png", "*.jpg", "*.zip")
     for p in pages:
         directory = os.path.dirname(safe_join(current_app.root_path, current_app.config.get("FLATPAGES_ROOT"), p.path))
         files = []
