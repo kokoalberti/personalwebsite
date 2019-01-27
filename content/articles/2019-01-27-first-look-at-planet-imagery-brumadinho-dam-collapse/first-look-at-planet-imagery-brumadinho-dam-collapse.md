@@ -8,7 +8,7 @@ status: published
 date: 2019-01-27
 
 
-This weekend news hit of a tailings dam collapse at a mine owned by Vale in Brumadinho, Brazil. From the initial reports and photos coming out of the area the scale looked immense. 
+This weekend news hit of a tailings dam collapse at a mine owned by Vale in Brumadinho, Brazil. From the initial reports and photos coming out of the area the damage looked immense. 
 
 Because news reports are generally sparse on geospatial details that would make sense of the scale of things, I started looking into the some specifics myself. No Sentinel imagery was available yet, but I did find post-disaster imagery available from the excellent people at <a href="https://planet.com">Planet</a>.
 
