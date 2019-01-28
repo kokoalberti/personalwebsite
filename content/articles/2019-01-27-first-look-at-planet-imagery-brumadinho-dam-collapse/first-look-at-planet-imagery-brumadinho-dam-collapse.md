@@ -10,9 +10,9 @@ date: 2019-01-27
 
 This weekend news hit of a tailings dam collapse at a mine owned by Vale in Brumadinho, Brazil. From the initial reports and photos coming out of the area the damage looked immense. 
 
-Because news reports were sparse on geospatial details that show the scale of the disaster, I started looking around for some data and put together this before/after visualization based on imagery by <a href="https://planet.com">Planet</a>.
+Because news reports were sparse on geospatial details that show the extent of the disaster, I started looking around for some data and put together this before/after visualization based on imagery by <a href="https://planet.com">Planet</a>.
 
-The extent of the damage looks to cover around 244 hectares, and the flood has destroyed large swaths of infrastructure in its path, including bridges, roads, and a smaller reservoir nestled in the valley downstream. Here are the before and after images:
+The extent of the affected area looks to cover around 240 hectares (2.4sq.km), and the flood has destroyed large swaths of infrastructure in its path, including buildings, bridges, roads, and a smaller reservoir nestled in the valley downstream. Here are the before and after images:
 
 </arcile>
 </div>
@@ -40,7 +40,7 @@ The extent of the damage looks to cover around 244 hectares, and the flood has d
     28 Jan: Updated the images with some more details, added additional dams on the maps.
 </p>
 <p class="notes-and-comments">
-    28 Jan: Editing for less text.
+    28 Jan: Editing for less text, fix typo in image header, added presentation link.
 </p>
 <h2 class='notes-and-comments'>Notes and comments</h2>
 
