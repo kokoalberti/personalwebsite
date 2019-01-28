@@ -19,10 +19,10 @@ The extent of the damage looks to cover around 244 hectares, and the flood has c
 </arcile>
 </div>
 
-<div style="width:1047px;margin:auto;margin-bottom:20px;">
+<div style="width:1054px;margin:auto;margin-bottom:20px;">
 <div class="juxtapose">
-<img src="before.jpg">
-<img src="after.jpg">
+<img src="before_v1.jpg">
+<img src="after_v1.jpg">
 </div>
 </div>
 
@@ -35,6 +35,11 @@ You can download the <a href="brumadinho_damage_extent.zip">shapefile for the da
 <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
 
 <div class="notes-and-comments">
+<h2 class='notes-and-comments'>Updates</h2>
+<p class="notes-and-comments">
+    28 Jan: Updated the images with some more details, added additional dams on the maps.
+</p>
+
 <h2 class='notes-and-comments'>Notes and comments</h2>
 
 <p class="notes-and-comments">
