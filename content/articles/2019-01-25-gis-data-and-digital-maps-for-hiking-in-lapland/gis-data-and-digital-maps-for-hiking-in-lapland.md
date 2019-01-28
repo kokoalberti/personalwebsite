@@ -46,7 +46,7 @@ A `gdal_translate` command can be used to convert the RGB bands of the PNG image
         kungsleden_topo.png \
         kungsleden_topo.tif
 
-<center><a href="#">Download full image as GeoTIFF (25Mb)</a></center>
+<center><a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_topo.tif">Download full topo image as GeoTIFF (23.5Mb)</a></center>
 
 The map is in the `SWEREF99 TM` spatial reference system, applied to the image using the `-a_srs EPSG:3006` option. I obtained the extents for the `-a_ullr` option manually by carefully looking up the coordinates of the edges of my original map image. The other creation options defined by `-co` are for optimization purposes. 
 
@@ -83,7 +83,7 @@ Setting nodata values, compression, and a conversion from `Float32` to `Int16` d
 
 ![Sample](./sample_dem.jpg)
 
-<center><a href="#">Download full image as GeoTIFF (25Mb)</a></center>
+<center><a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_dem.tif">Download full DEM image as GeoTIFF (44.9Mb)</a></center>
 
 # Satellite imagery
 
@@ -120,7 +120,7 @@ This results in a nice satellite composite that matches up with our other datase
 
 ![Sample](./sample_sat.jpg)
 
-<center><a href="#">Download full image as GeoTIFF (25Mb)</a></center>
+<center><a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_sat.tif">Download full satellite image as GeoTIFF (24.4Mb)</a></center>
 
 One issue that I encounted was that some of the glaciers are misrepresented as nodata in the tiles, perhaps due to their similarity to clouds, resulting in nodata pixels becoming black on the glaciers. This didn't look so good and was circumvented by setting `-wo INIT_DEST=255`, which initializes the new raster with values of 255, making all nodata pixels white instead.
 
@@ -128,7 +128,7 @@ I have also created a high resolution version (left) of the satellite map using 
 
 ![Sample](./hires_lowres.jpg)
 
-<center><a href="#">Download full high resolution image GeoTIFF (25Mb)</a></center>
+<center><a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_sat_hires.tif">Download full high resolution satellite image as GeoTIFF (192.3Mb)</a></center>
 
 # Creating maps for a Garmin GPS receiver
 
