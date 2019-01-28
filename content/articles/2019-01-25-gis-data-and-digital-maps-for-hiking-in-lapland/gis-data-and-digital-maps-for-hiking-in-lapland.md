@@ -140,20 +140,18 @@ The gist of it is that a KML file needs to be created with one or more JPEG imag
 
 Because the data are hosted publically on S3 as cloud optimized GeoTIFFs, it's easy to cut extracts from them using GDAL without having to download the whole file. For example, if you want to make a cutout of Sarek National Park for your next trip, just run the following command and GDAL will download and crop the relevant section from the file on S3:
 
-# Downloads
+<h1 id="downloads">Downloads</h1>
 
 I've hosted all the files on Amazon S3, so feel free to download them from there for your own use.
 
-- Kungsleden Fjallkartan (7400x10000 GTiff, 23.5Mb)
-- Kungsleden Digital Elevation Model (7400x10000 GTiff, 44.9Mb)
-- Kungsleden Satellite (7400x10000 GTiff, 17.1Mb)
-- Kungsleden Satellite High Res
+- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_topo.tif">Kungsleden Fjallkartan</a> (7400x10000 GTiff, 23.5Mb)
+- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_dem.tif">Kungsleden Digital Elevation Model</a> (7400x10000 GTiff, 44.9Mb)
+- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_sat.tif">Kungsleden Satellite</a> (7400x10000 GTiff, 24.4Mb)
+- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_sat_hires.tif">Kungsleden Satellite High Res</a> (22000x30000 GTiff, 192.3Mb)
+
+And some extracts covering only Sarek National Park:
 
 The equivalent overlays for your Garmin device:
-
-The extracts for Sarek National Park:
-
-
 
 # Acknowledgements
 
