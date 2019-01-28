@@ -10,11 +10,9 @@ date: 2019-01-27
 
 This weekend news hit of a tailings dam collapse at a mine owned by Vale in Brumadinho, Brazil. From the initial reports and photos coming out of the area the damage looked immense. 
 
-Because news reports are generally sparse on geospatial details that would make sense of the scale of things, I started looking into the some specifics myself. No Sentinel imagery was available yet, but I did find post-disaster imagery available from the excellent people at <a href="https://planet.com">Planet</a>.
+Because news reports were sparse on geospatial details that show the scale of the disaster, I started looking around for some data and put together this before/after visualization based on imagery by <a href="https://planet.com">Planet</a>.
 
-I thought I'd make an infographic of the situation and make the shapefiles available of the damage extent. Hopefully it is useful in explaining the current state of affairs or for whoever else may be interested in what's going on.
-
-The extent of the damage looks to cover around 244 hectares, and the flood has completely destroyed all the infrastructure in its path, including bridges, roads, and a smaller reservoir nestled in the valley downstream. Here are the before and after images:
+The extent of the damage looks to cover around 244 hectares, and the flood has destroyed large swaths of infrastructure in its path, including bridges, roads, and a smaller reservoir nestled in the valley downstream. Here are the before and after images:
 
 </arcile>
 </div>
@@ -29,7 +27,11 @@ The extent of the damage looks to cover around 244 hectares, and the flood has c
 <div class="content">
 <article>
 
-You can download the <a href="brumadinho_damage_extent.zip">shapefile for the damage extent</a> here (7Kb). It's in UTM Zone 22. For access to the satellite imagery it is probably best to contact the people at <a href="https://planet.com">Planet</a> directly.
+You can download the <a href="brumadinho_damage_extent.zip">shapefile for the damage extent</a> here (7Kb). It's in UTM Zone 22. For access to the satellite imagery it is probably best to contact the people at <a href="https://planet.com">Planet</a> directly. 
+
+
+There is also a <a href="https://www.slideshare.net/comcbhvelhas/barragens-de-mineracaovale">presentation from Vale</a> online with more details (photos, statistics, risk classifications) on this and other tailings dams in the surrounding area.
+
 
 <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
 <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
@@ -39,7 +41,9 @@ You can download the <a href="brumadinho_damage_extent.zip">shapefile for the da
 <p class="notes-and-comments">
     28 Jan: Updated the images with some more details, added additional dams on the maps.
 </p>
-
+<p class="notes-and-comments">
+    28 Jan: Editing for less text.
+</p>
 <h2 class='notes-and-comments'>Notes and comments</h2>
 
 <p class="notes-and-comments">
