@@ -27,11 +27,9 @@ The extent of the damage looks to cover around 244 hectares, and the flood has d
 <div class="content">
 <article>
 
-You can download the <a href="brumadinho_damage_extent.zip">shapefile for the damage extent</a> here (7Kb). It's in UTM Zone 22. For access to the satellite imagery it is probably best to contact the people at <a href="https://planet.com">Planet</a> directly. 
+<p>You can download the <a href="brumadinho_damage_extent.zip">shapefile for the damage extent</a> here (7Kb). It's in UTM Zone 22. For access to the satellite imagery it is probably best to contact the people at <a href="https://planet.com">Planet</a> directly.</p>
 
-
-There is also a <a href="https://www.slideshare.net/comcbhvelhas/barragens-de-mineracaovale">presentation from Vale</a> online with more details (photos, statistics, risk classifications) on this and other tailings dams in the surrounding area.
-
+<p>There is also a <a href="https://www.slideshare.net/comcbhvelhas/barragens-de-mineracaovale">presentation from Vale</a> online with more details (photos, statistics, risk classifications) on this and other tailings dams in the surrounding area.</p>
 
 <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
 <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
