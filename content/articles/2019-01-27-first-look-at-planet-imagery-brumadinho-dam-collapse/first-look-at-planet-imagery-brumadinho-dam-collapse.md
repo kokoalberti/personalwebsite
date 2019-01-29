@@ -12,9 +12,9 @@ This weekend news hit of a tailings dam collapse at a mine owned by Vale in Brum
 
 Because news reports were sparse on geospatial details that show the extent of the disaster, I started looking around for some data and put together this before/after visualization based on imagery by <a href="https://planet.com">Planet</a>.
 
-The extent of the affected area looks to cover around 240 hectares (2.4sq.km), and the flood has destroyed large swaths of infrastructure in its path, including buildings, bridges, roads, and a smaller reservoir nestled in the valley downstream. Here are the before and after images:
+The extent of the affected area looks to cover around 240 hectares (2.4sq.km), and the flood has destroyed large swaths of infrastructure in its path, including buildings, bridges, roads, and a smaller reservoir nestled in the valley downstream. Here are the before and after images, each white square is an area of 100 by 100 meters:
 
-</arcile>
+</article>
 </div>
 
 <div style="width:1054px;margin:auto;margin-bottom:20px;">
