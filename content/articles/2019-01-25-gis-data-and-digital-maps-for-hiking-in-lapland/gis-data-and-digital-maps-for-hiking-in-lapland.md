@@ -11,27 +11,27 @@ I have visited the area several times now and feel that digital maps would be he
 
 So, let's have a look at obtaining some digital copies of the Fjallkartan maps for Northern Sweden, and perhaps an elevation model and some satellite imagery would be nice too. I've included most of the steps and GDAL commands I've used, so if you're interested you should be able to reproduce these maps for other areas as well.
 
-You can also skip down to the <a href="#">downloads</a> section if you're only interested in the data.
+You can also skip down to the <a href="#downloads">downloads</a> section at the end if you're only interested in the data.
 
 # Area of interest
 
 The area I'm interested in is the mountain range in Northern Sweden, bordering Norway and surrounding the <a href="https://en.wikipedia.org/wiki/Kungsleden">Kungsleden Trail</a>, from Abisko in the North to the town of Hemavan in the South. The area includes several national parks (Abisko, Sarek, Padjelanta, Stora Sjofallets, Pieljekaise), trails (Kungsleden, Padjelanta) and peaks (Kebnekaise). The area is (depending on your definition) one of Europe's last remaining wildernesses, and the landscapes are absolutely stunning:
 
-![Sample](./sweden_0.jpg)
+![Lapland river crossing](./sweden_0.jpg)
 
-![Sample](./sweden_1.jpg)
+![Lapland panorama](./sweden_1.jpg)
 
-![Sample](./sweden_2.jpg)
+![Lapland glacier](./sweden_2.jpg)
 
 The photos were made by Anthony Arnold during our <a href="https://www.youtube.com/watch?v=_KiSp3mJEDk">hike from Nikkaluokta to Narvik</a> in the summer of 2016.
 
 # Fjallkartan data
 
-I was unable to find ready-made GeoTIFF versions of the maps on the Lantmateriet website (bit of a language barrier...) but their <a href="https://kso.etjanster.lantmateriet.se/oppnadata.html">open data site</a> lets you download sections of the maps as PNG images. While these seem like small extracts at first, you can download large sections at once by zooming out your browser with `CTRL-MINUS`, while keeping the map at the detail level that you want. With some cropping and copy-pasting I ended up with a huge image of around 7400 by 10000 pixels (some 236km by 320km) covering the entire region in sufficient detail:
+I was unable to find ready-made GeoTIFF versions of the maps on the Lantmateriet website (bit of a language barrier, not sure if they're available at all actually) but their <a href="https://kso.etjanster.lantmateriet.se/oppnadata.html">open data site</a> lets you download sections of these maps as PNG images. While these seem like small extracts at first, you can download large sections at once by zooming out your browser with `CTRL-MINUS`, while keeping the map at the detail level that you want. With some cropping and copy-pasting I ended up with a huge image of around 7400 by 10000 pixels (236km by 320km) covering the entire region in sufficient detail:
 
-![Sample](./sample_topo.jpg)
+![Sample image of the topo map](./sample_topo.jpg)
 
-A `gdal_translate` command can be used to convert the RGB bands of the PNG image into an optimized (compressed, tiled, etc) GeoTIFF file. The following command was used to create the final output map `kungsleden-topo.tif`, about 20Mb in size:
+A `gdal_translate` command can be used to convert the RGB bands of the PNG image into an optimized (compressed, tiled, etc) GeoTIFF file. The following command was used to create the final output map `kungsleden-topo.tif`, about 23Mb in size:
 
     :::console
     gdal_translate \
@@ -81,7 +81,7 @@ And then warp the VRT file into the desired output coordinate system and extent:
 
 Setting nodata values, compression, and a conversion from `Float32` to `Int16` data type are also included in the command. Our DEM is now looking good and matches the topo map created earlier:
 
-![Sample](./sample_dem.jpg)
+![Sample image of the elevation model](./sample_dem.jpg)
 
 <center><a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_dem.tif">Download full DEM image as GeoTIFF (44.9Mb)</a></center>
 
@@ -91,9 +91,9 @@ For the satellite imagery we will use the <a href="https://s2maps.eu/">Sentinel-
 
 There are various access methods, but I prefer direct access to the tiles via the `eox-s2maps` bucket on Amazon S3. This is a 'requestor pays' bucket, meaning that you have to set up your AWS account and pay for the data you transfer out of the bucket. I used a <a href="">small script</a> to download 612 tiles at zoom level 11, looking a bit like this for our area of interest:
 
-![Sample](./cloudless_tiles_sample.jpg)
+![Selecting the tiles from the Sentinel cloudless dataset](./cloudless_tiles_sample.jpg)
 
-So now we have 612 tiles of 512 by 512 pixels each in a `tiles` subdirectory. They look a bit squashed and distorted because the area is so far North, but we'll warp them to the same map extent as all our other maps of the region. Again in a two-step approach, first building a mosaic of all the tiles with `gdalbuildvrt`:
+So now we have 612 tiles of 512 by 512 pixels each in a `tiles` subdirectory. They look a bit squashed and distorted because the area is so far North, but we'll warp them to the same map projection and extent as all our other maps of the region. Again in a two-step approach, first building a mosaic of all the tiles with `gdalbuildvrt`:
 
     ::console
     gdalbuildvrt \
@@ -118,15 +118,15 @@ And then reprojecting everything with `gdalwarp` to our desired dimensions:
 
 This results in a nice satellite composite that matches up with our other datasets:
 
-![Sample](./sample_sat.jpg)
+![Sample image of the satellite view](./sample_sat.jpg)
 
 <center><a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_sat.tif">Download full satellite image as GeoTIFF (24.4Mb)</a></center>
 
 One issue that I encounted was that some of the glaciers are misrepresented as nodata in the tiles, perhaps due to their similarity to clouds, resulting in nodata pixels becoming black on the glaciers. This didn't look so good and was circumvented by setting `-wo INIT_DEST=255`, which initializes the new raster with values of 255, making all nodata pixels white instead.
 
-I have also created a high resolution version (left) of the satellite map using source tiles at zoom level 13, which shows a bit more features than the low-res version (right):
+I have also created a high resolution version (left) of the satellite map using (a lot more) source tiles at zoom level 13, which shows a bit more features than the low-res version (right):
 
-![Sample](./hires_lowres.jpg)
+![High-resolution vs low resolution version of the satellite image](./hires_lowres.jpg)
 
 <center><a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_sat_hires.tif">Download full high resolution satellite image as GeoTIFF (192.3Mb)</a></center>
 
@@ -136,22 +136,18 @@ I have a Garmin eTrex 30x GPS receiver which supports loading adding additional 
 
 The gist of it is that a KML file needs to be created with one or more JPEG image overlays in it that contain your map image. The overlays can't be bigger than 1024x1024 pixels each without losing quality, and a maximum of 100 of these overlays are allowed for each map [4]. I'd like to figure out if this can be done with GDAL sometime, but for now I've found a nice Windows utility called <a href="https://moagu.com/?page_id=155">G-Raster</a> that streamlines this somewhat cumbersome process. The full version is needed for creating large maps with multiple overlays, and it costs a reasonable $5 that probably supports its creator.
 
-# Creating cutouts from data on S3
-
-Because the data are hosted publically on S3 as cloud optimized GeoTIFFs, it's easy to cut extracts from them using GDAL without having to download the whole file. For example, if you want to make a cutout of Sarek National Park for your next trip, just run the following command and GDAL will download and crop the relevant section from the file on S3:
-
 <h1 id="downloads">Downloads</h1>
 
 I've hosted all the files on Amazon S3, so feel free to download them from there for your own use.
 
-- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_topo.tif">Kungsleden Fjallkartan</a> (7400x10000 GTiff, 23.5Mb)
-- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_dem.tif">Kungsleden Digital Elevation Model</a> (7400x10000 GTiff, 44.9Mb)
-- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_sat.tif">Kungsleden Satellite</a> (7400x10000 GTiff, 24.4Mb)
-- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_sat_hires.tif">Kungsleden Satellite High Res</a> (22000x30000 GTiff, 192.3Mb)
+- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_topo.tif">Kungsleden Fjallkartan</a> (23.5Mb GTiff - 7400x10000)
+- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_dem.tif">Kungsleden Digital Elevation Model</a> (44.9Mb GTiff - 7400x10000)
+- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_sat.tif">Kungsleden Satellite</a> (24.4Mb GTiff - 7400x10000)
+- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_sat_hires.tif">Kungsleden Satellite High Res</a> (192.3Mb GTiff - 22000x30000)
 
 And some extracts covering only Sarek National Park:
 
-The equivalent overlays for your Garmin device:
+The equivalent overlays for your Garmin device, made with G-Raster:
 
 # Acknowledgements
 
