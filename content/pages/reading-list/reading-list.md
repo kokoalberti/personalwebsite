@@ -13,6 +13,10 @@ I also find that it motivates me to spend more time reading, and suggestions fro
 
 ### 2019
 
+- The Wild Places (Robert Macfarlane)
+
+- Notes From A Small Island (Bill Bryson)
+
 - Sapiens: A Brief History of Humankind (Yuval Noah Harari)
 
 - Landmarks (Robert Macfarlane)
