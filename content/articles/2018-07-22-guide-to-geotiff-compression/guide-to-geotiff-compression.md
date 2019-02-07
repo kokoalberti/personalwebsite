@@ -3,6 +3,7 @@ type: article
 slug: geotiff-compression-optimization-guide
 tags: [geo, geofolio, gdal, geotiff, compression]
 status: published
+preview: preview.jpg
 date: 2018-08-16
 
 With the fast ZSTD compression (GDAL 2.3 and above) and Limited Error Raster Compression (GDAL 2.4) becoming available in our favourite geospatial toolkit, I thought it would be interesting to run some benchmarks and write a guide on compressing and optimizing GeoTIFF files using the latest versions of GDAL. 

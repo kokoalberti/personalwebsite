@@ -5,6 +5,7 @@ type: article
 slug: first-look-at-planet-imagery-brumadinho-dam-collapse
 tags: [geo, planet, brumadinho, damcollapse]
 status: published
+preview: preview.jpg
 date: 2019-01-27
 
 

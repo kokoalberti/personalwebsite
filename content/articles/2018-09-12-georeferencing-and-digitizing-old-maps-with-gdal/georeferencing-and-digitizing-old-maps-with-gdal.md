@@ -3,6 +3,7 @@ type: article
 slug: georeferencing-and-digitizing-old-maps-with-gdal
 tags: [geo, gdal, georeferencing]
 status: published
+preview: preview.jpg
 date: 2018-09-12
 
 While cleaning up some old USB drives I found several scanned images of wartime maps of my home town The Hague. I quite like the cartographic style and decided to digitize the maps using GDAL and turn them into a web map. This article explains how to do that, compares some of the different GDAL options, and shows how to make web tiles and a map viewer using Leaflet. 
