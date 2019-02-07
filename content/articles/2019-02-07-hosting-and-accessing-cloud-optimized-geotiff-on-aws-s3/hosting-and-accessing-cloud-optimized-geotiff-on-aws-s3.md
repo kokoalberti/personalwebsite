@@ -97,6 +97,8 @@ To implement the changes above, we can use a simple batch file to run a `gdal_tr
 
 Running this will create all the optimized files in the `optimized` subdirectory. There is also a utility in the GDAL sources called <a href= "https://raw.githubusercontent.com/OSGeo/gdal/master/gdal/swig/python/samples/validate_cloud_optimized_geotiff.py">`validate_cloud_optimized_geotiff.py`</a> which runs a few checks to verify that the GeoTIFF is indeed optimized. Running this on your original files will also give some hints as to what can be improved.
 
+Have a look at the <a href="https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF">GDAL docs on cloud optimized GeoTIFFs</a> for more information.
+
 ## Merging the tiles
 
 There are now 27 tiles totalling 46Gb in size. These can be combined into a single virtual dataset with the `gdalbuildvrt` tool:
