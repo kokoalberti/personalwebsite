@@ -3,6 +3,17 @@
 {% block title %}{{ article.title }}{% endblock %}
 {% block keywords %}{{ article.meta.keywords }}{% endblock %}
 {% block description %}{{ article.meta.description }}{% endblock %}
+{% block metatags %}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://kokoalberti.com{{ url_for('article', slug=article.slug) }}">
+    {% if article.title %}
+    <meta name="twitter:title" content="{{ article.title }}">
+    {% endif %}
+    {% if article.meta.preview %}
+    <meta name="twitter:image" content="https://kokoalberti.com{{ url_for('article_static', slug=article.slug, filename=article.meta.preview) }}">
+    {% endif %}
+{% endblock %}
+
 {% block content %}
 <header>
 
