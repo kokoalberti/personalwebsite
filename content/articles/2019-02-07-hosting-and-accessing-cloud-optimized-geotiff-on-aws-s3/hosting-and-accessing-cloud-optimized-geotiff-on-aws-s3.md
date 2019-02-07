@@ -23,7 +23,7 @@ There are several advantages to hosting raster datasets using the cloud-optimize
 
 * Hosting data in 'Requester Pays' buckets allows you to make large amounts of raw data available to others (or yourself), but the person downloading it has to pay for the data transfer costs through their AWS account. This incentivizes making data available while reducing the risk of incurring high costs when someone decides to start accessing it in large quantities.
 * There is no need to maintain/update/monitor any sort of geodata server to store the raster data. Just put it on S3, note down the URL somewhere, and basically never think about it again.
-* AWS takes care of much of the performance/scaling/bandwidth issues. You can probably run a bunch of parallel downloads from lots of different places without hitting any bottlenecks on the server end.
+* AWS takes care of much of the performance/scaling/bandwidth issues. You can probably run a bunch of parallel requests from lots of different places (think AWS Lambda) without hitting any bottlenecks on the server end.
 * Hosting some data on S3 is not super expensive. A 50Gb dataset like this EU-DEM will cost around $1.10/mo in the standard storage class, or $0.70/mo for infrequent access. Perhaps there are some other storage providers out there as well (as long as they support HTTP range requests on items in a bucket) that can compete on price.
 * You can access data on the fly using the GDAL virtual file systems from pretty much anywhere. You're only limited by your own bandwidth, so this works great if your application is also hosted on AWS. Because the virtual file systems are well supported in GDAL you can use the data source seamlessly in all the GDAL command line tools.
 
@@ -33,7 +33,7 @@ There are several advantages to hosting raster datasets using the cloud-optimize
 
 The EU-DEM dataset is available from the <a href="https://land.copernicus.eu/">Copernicus Land Monitoring Service</a>. Of course they have a <a href="https://land.copernicus.eu/imagery-in-situ/eu-dem/eu-dem-v1.1">data portal</a> for which you have to register to be able to download files. After that it's possible to select the tiles you are interested in, and it will give you a download link for an archive with tiles. Each tile is some 4000 by 4000 pixels with a spatial resolution of 25m.
 
-![Three sample images](./eudem_tiles.jpg)
+![EU-DEM tiling scheme](./eudem_tiles.jpg)
 
 <center><small>Tiling scheme of EU-DEM dataset</small></center>
 
