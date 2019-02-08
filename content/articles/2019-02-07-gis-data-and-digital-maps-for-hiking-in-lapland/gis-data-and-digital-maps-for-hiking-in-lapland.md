@@ -3,13 +3,13 @@ type: article
 slug: gis-data-and-digital-maps-for-hiking-in-lapland
 tags: [geo, gdal, hiking, kungsleden, sarek]
 status: published
-date: 2019-01-25
+date: 2019-01-08
 
 If you've ever done (or plan on doing) any hiking in the Arctic mountains of beautiful Lapland in Northern Sweden, you'll be familiar with the wonderful purple-colored Fjallkartan maps published by Lantmateriet. The hardcopy maps are essential when you're up there, but lately I've found myself wanting to have a digital version of these maps (and other data) as well. 
 
 I have visited the area several times now and feel that digital maps would be helpful in planning trips, mapping tracks after getting back, as an extra layer in a GPS receiver, or even just for experimenting with in QGIS.
 
-So, let's have a look at obtaining some digital copies of the Fjallkartan maps for Northern Sweden, and perhaps an elevation model and some satellite imagery would be nice too. I've included most of the steps and GDAL commands I've used, so if you're interested you should be able to reproduce these maps for other areas as well.
+So, let's have a look at obtaining some digital copies of the Fjallkartan maps for Northern Sweden, and perhaps an elevation model and some satellite imagery would be nice too. I've included most of the steps and GDAL commands I've used, so if you're interested you should be able to reproduce these types of maps for other areas as well.
 
 You can also skip down to the <a href="#downloads">downloads</a> section at the end if you're only interested in the data.
 
@@ -31,7 +31,7 @@ I was unable to find ready-made GeoTIFF versions of the maps on the Lantmateriet
 
 ![Sample image of the topo map](./sample_topo.jpg)
 
-A `gdal_translate` command can be used to convert the RGB bands of the PNG image into an optimized (compressed, tiled, etc) GeoTIFF file. The following command was used to create the final output map `kungsleden-topo.tif`, about 23Mb in size:
+A `gdal_translate` command can be used to convert the RGB bands of the PNG image into an optimized (compressed, tiled, etc) GeoTIFF file. The following command was used to create the final output map `kungsleden_topo.tif`, about 23Mb in size:
 
     :::console
     gdal_translate \
@@ -48,7 +48,7 @@ A `gdal_translate` command can be used to convert the RGB bands of the PNG image
 
 <center><a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_topo.tif">Download full topo image as GeoTIFF (23.5Mb)</a></center>
 
-The map is in the `SWEREF99 TM` spatial reference system, applied to the image using the `-a_srs EPSG:3006` option. I obtained the extents for the `-a_ullr` option manually by carefully looking up the coordinates of the edges of my original map image. The other creation options defined by `-co` are for optimization purposes. 
+The map is in the `SWEREF99TM` spatial reference system, applied to the image using the `-a_srs EPSG:3006` option. I obtained the extents for the `-a_ullr` option manually by carefully looking up the coordinates of the edges of my original map image. The other creation options defined by `-co` are for optimization purposes. 
 
 # Digital elevation model
 
@@ -89,7 +89,7 @@ Setting nodata values, compression, and a conversion from `Float32` to `Int16` d
 
 For the satellite imagery we will use the <a href="https://s2maps.eu/">Sentinel-2 cloudless</a> dataset produced by <a href="https://eox.at/">EOX</a> [1]. There's a few quick wins here: the data is available in GeoTIFF format straight from Amazon S3, it has global coverage, and the different tiling levels let you choose the resolution most suitable to your use case. 
 
-There are various access methods, but I prefer direct access to the tiles via the `eox-s2maps` bucket on Amazon S3. This is a 'requestor pays' bucket, meaning that you have to set up your AWS account and pay for the data you transfer out of the bucket. I used a <a href="">small script</a> to download 612 tiles at zoom level 11, looking a bit like this for our area of interest:
+There are various access methods, but I prefer direct access to the tiles via the `eox-s2maps` bucket on Amazon S3. This is a 'Requester Pays' bucket, meaning that you have to set up your AWS account and pay for the data you transfer out of the bucket. I used a <a href="https://github.com/kokoalberti/geocmd/blob/master/s2c-download/s2c-download.py">small script</a> to download 612 tiles at zoom level 11, looking a bit like this for our area of interest:
 
 ![Selecting the tiles from the Sentinel cloudless dataset](./cloudless_tiles_sample.jpg)
 
@@ -132,28 +132,73 @@ I have also created a high resolution version (left) of the satellite map using 
 
 # Creating maps for a Garmin GPS receiver
 
-I have a Garmin eTrex 30x GPS receiver which supports loading adding additional map layers as background maps. Unfortunately you can't just upload your geoferenced GeoTIFF to the device (that would be so straightforward it would just be silly... /s) so there are a couple of extra steps to it.
+I have a Garmin eTrex 30x GPS receiver which supports loading adding an additional map layer called a 'custom map'. Unfortunately you can't just upload your geoferenced GeoTIFF to the device (that would be so straightforward it would just be silly... /s) so there are a couple of extra steps to it.
 
-The gist of it is that a KML file needs to be created with one or more JPEG image overlays in it that contain your map image. The overlays can't be bigger than 1024x1024 pixels each without losing quality, and a maximum of 100 of these overlays are allowed for each map [4]. I'd like to figure out if this can be done with GDAL sometime, but for now I've found a nice Windows utility called <a href="https://moagu.com/?page_id=155">G-Raster</a> that streamlines this somewhat cumbersome process. The full version is needed for creating large maps with multiple overlays, and it costs a reasonable $5 that probably supports its creator.
+The gist of it is that a KML file needs to be created with one or more JPEG image overlays in it that contain your map image. The overlays can't be bigger than 1024x1024 pixels each without losing quality, and a maximum of 100 of these overlays are allowed for each map [4]. The images should be in an unprojected geographic coordinate system (`EPSG:4326`) as well.
+
+There are a few programs out there that will do this conversion for you, but I had some mixed results. Maps would get distorted or the quality wouldn't be optimal, and sometimes the georeferencing was even off. I decided to roll my own using some QGIS, GDAL and Python magic. It's not super complicated and after trying it you'll know exactly how it works, which is also good.
+
+## Planning the tiles
+
+First step was to lay out the square tiles I was going to use over the unprojected `EPSG:4326` topo map of the area. This was done in QGIS by using the "Vector Grid" utility, and tweaking the grid size and extent so that (after deleting some unused tiles) there would be less than 100 tiles remaining, in this case 81:
+
+![Sample image of the elevation model](./garmin_tiles.jpg)
+
+QGIS has even been so kind to add `xmin`, `xmax`, `ymin`, and `ymax` coordinates as attributes of each tile. Save the grid as a CSV file with the name `grid.csv`, we'll need it in the next step for cutting out the tiles.
+
+## Creating the tile images and KMZ
+
+Creating the tile images turned into a bit of a rabbit hole of GDAL commands, so in the end I decided it would be easier to make small Python script to automate the task and it would be re-usable in the future. The script is called <a href="https://github.com/kokoalberti/geocmd/blob/master/make-garmin-kmz/make-garmin-kmz.py">`make-garmin-kmz.py`</a> and it does the following:
+
+* Read the extent of each of the tiles from a supplied CSV grid file.
+* Check if it can parse the `xmin`, `xmax`, `ymin`, and `ymax` columns and that the resulting tile is actually a square.
+* For each tile, create a new in-memory `EPSG:4326` raster of 1024 by 1024 pixels, and use <a href="https://gdal.org/python/osgeo.gdal-module.html#Warp">`gdal.Warp()`</a> to warp a part of the original `kungsleden_topo.tif` (or other) map into it.
+* Use <a href="https://gdal.org/python/osgeo.gdal-module.html#Translate">`gdal.Translate()`</a> to save the in-memory datasets as JPEG straight into a `custom-map.kmz` file using the GDAL <a href="https://www.gdal.org/gdal_virtual_file_systems.html#gdal_virtual_file_systems_vsizip">`/vsizip/`</a> virtual file system.
+* Create a KML file `doc.kml` that contains the index of all the tiles, and add that in the `custom-map.kmz` file.
+
+Run it as:
+
+    ::console
+    $ head -5 grid.csv
+    id,xmin,xmax,ymin,ymax
+    1,16.13210,16.53210,68.13318,68.53318
+    2,16.53210,16.93210,68.13318,68.53318
+    3,16.93210,17.33210,68.13318,68.53318
+    4,17.33210,17.73210,68.13318,68.53318
+    $ python3 make-garmin-kmz.py --grid grid.csv --raster kungsleden_sat_hires.tif
+    Creating 81 tiles inside custom-map.kmz...
+    Done!
+    $
+
+I've tuned down the JPEG quality a bit on the final maps to make them load a bit faster on the GPS device as well.
+
+## Loading on the device
+
+Last step is easy, just hook up the Garmin device and copy the KMZ to the `CustomMaps` directory. Restart it, enable the custom maps overlay in the map settings, and the maps should load if you zoom in a little. You can download the Garmin KMZ of the <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/garmin_kungsleden_topo.kmz">Topo Overlay (12.0Mb)</a> and the <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/garmin_kungsleden_sat.kmz">Satellite Overlay (7.6Mb)</a>.
+
+![Topo map (left) and satellite map (right)](./garmin_custom_maps.jpg)
 
 <h1 id="downloads">Downloads</h1>
 
-I've hosted all the files on Amazon S3, so feel free to download them from there for your own use.
+I've hosted all the files on Amazon S3, so feel free to download them from there for your own planning and adventure purposes:
 
-- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_topo.tif">Kungsleden Fjallkartan</a> (23.5Mb GTiff - 7400x10000)
-- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_dem.tif">Kungsleden Digital Elevation Model</a> (44.9Mb GTiff - 7400x10000)
-- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_sat.tif">Kungsleden Satellite</a> (24.4Mb GTiff - 7400x10000)
-- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_sat_hires.tif">Kungsleden Satellite High Res</a> (192.3Mb GTiff - 22000x30000)
+- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_topo.tif">Kungsleden Topo Fjallkartan</a> (23.5Mb, GTiff)
+- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_dem.tif">Kungsleden Digital Elevation Model</a> (44.9Mb, GTiff)
+- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_sat.tif">Kungsleden Satellite</a> (24.4Mb, GTiff)
+- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/kungsleden_sat_hires.tif">Kungsleden Satellite High Res</a> (192.3Mb, GTiff)
 
-And some extracts covering only Sarek National Park:
+The equivalent overlays for your Garmin device:
 
-The equivalent overlays for your Garmin device, made with G-Raster:
+- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/garmin_kungsleden_topo.kmz">Kungsleden Topo Fjallkartan (Garmin Overlay)</a> (12.0Mb, KMZ)
+- <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/garmin_kungsleden_sat.kmz">Kungsleden Satellite (Garmin Overlay)</a> (7.6Mb, KMZ)
+
+# Licensing
+
+Please we aware of the licensing requirements of the data sources if you intend to use them. The <a href="https://s2maps.eu">Sentinel 2 cloudless</a> data by <a href="https://eox.at">EOX</a> is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>, the Swedish Fjallkartan maps by Lantmateriet are in the public domain and available under a <a href="https://creativecommons.org/share-your-work/public-domain/cc0/">CC-0 License</a>, and see <a href="https://land.copernicus.eu/imagery-in-situ/eu-dem/eu-dem-v1.1?tab=metadata">this page</a> for licensing information for the EU-DEM 1.1 dataset.
 
 # Acknowledgements
 
-Thanks to EOX for creating the Sentinel-2 cloudless dataset, and the European Space Agency (ESA) for their Copernicus programme and all the data it is generating. 
-
-And a big thank you to Lantmateriet for making high quality maps that allow people to explore nature in a responsible manner.
+Thanks to EOX for creating the wonderful Sentinel-2 cloudless dataset and Landmateriet for their excellent mountain maps of Sweden.
 
 <div class="notes-and-comments">
 <h2 class='notes-and-comments'>Disclaimer</h2>
@@ -180,7 +225,7 @@ Thanks for reading! While there is no comment functionality on this website, I d
 [3] Lantmateriet data available via <a href="https://opendata.lantmateriet.se/">https://opendata.lantmateriet.se/</a> and <a href="https://lantmateriet.se/">https://lantmateriet.se/</a>
 </p>
 <p class="notes-and-comments">
-[4] See <a href="https://forums.gpsfiledepot.com/index.php?topic=2832.0">this topic</a> on gpsfiledepot.com for more info on the Garmin map format.
+[4] See <a href="https://forums.gpsfiledepot.com/index.php?topic=2832.0">this topic</a> on gpsfiledepot.com for more info on the Garmin map format, as well as this Garmin support page about <a href="https://support.garmin.com/en-IE/?faq=FtEncUXbaE0xE04yZ7gTq5">custom map limitations</a>.
 </p>
 
 
