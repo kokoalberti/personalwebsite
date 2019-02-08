@@ -148,7 +148,7 @@ QGIS has even been so kind to add `xmin`, `xmax`, `ymin`, and `ymax` coordinates
 
 ## Creating the tile images and KMZ
 
-Creating the tile images turned into a bit of a rabbit hole of GDAL commands, so in the end I decided it would be easier to make small Python script to automate the task and it would be re-usable in the future. The script is called <a href="https://github.com/kokoalberti/geocmd/blob/master/make-garmin-kmz/make-garmin-kmz.py">`make-garmin-kmz.py`</a> and it does the following:
+Creating the individual tile images turned into a bit of a rabbit hole of GDAL commands, so in the end I decided it would be easier to make small Python script to automate the task and it would be re-usable in the future. The script is called <a href="https://github.com/kokoalberti/geocmd/blob/master/make-garmin-kmz/make-garmin-kmz.py">`make-garmin-kmz.py`</a> and it does the following:
 
 * Read the extent of each of the tiles from a supplied CSV grid file.
 * Check if it can parse the `xmin`, `xmax`, `ymin`, and `ymax` columns and that the resulting tile is actually a square.
@@ -177,6 +177,8 @@ I've tuned down the JPEG quality a bit on the final maps to make them load a bit
 Last step is easy, just hook up the Garmin device and copy the KMZ to the `CustomMaps` directory. Restart it, enable the custom maps overlay in the map settings, and the maps should load if you zoom in a little. You can download the Garmin KMZ of the <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/garmin_kungsleden_topo.kmz">Topo Overlay (12.0Mb)</a> and the <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/garmin_kungsleden_sat.kmz">Satellite Overlay (7.6Mb)</a>.
 
 ![Topo map (left) and satellite map (right)](./garmin_custom_maps.jpg)
+
+<center><small>Topo custom map (left) and satellite view (right) on Garmin eTrex 30x receiver</small></center>
 
 <h1 id="downloads">Downloads</h1>
 
