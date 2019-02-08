@@ -3,7 +3,7 @@ type: article
 slug: gis-data-and-digital-maps-for-hiking-in-lapland
 tags: [geo, gdal, hiking, kungsleden, sarek]
 status: published
-date: 2019-01-08
+date: 2019-02-08
 
 If you've ever done (or plan on doing) any hiking in the Arctic mountains of beautiful Lapland in Northern Sweden, you'll be familiar with the wonderful purple-colored Fjallkartan maps published by Lantmateriet. The hardcopy maps are essential when you're up there, but lately I've found myself wanting to have a digital version of these maps (and other data) as well. 
 
