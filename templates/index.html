@@ -3,9 +3,6 @@
 {% block description %}{{ index.meta.description }}{% endblock %}
 {% block headcss %}
 <style>
-header {
-  font-size:1.2em;
-}
 header h1 {
     opacity:0;
     position:absolute;
@@ -17,27 +14,54 @@ header p {
   padding-top:5px;
   padding-bottom:5px;
 }
+header {
+  margin-bottom:10px;
+}
+
+
+div.summary h4, div.summary p {
+  margin:5px 0px 5px 0px;
+}
+div.summary h4 {
+  margin-top:25px;
+}
+div.summary li {
+  margin-bottom:7px;
+  margin-top:7px;
+  line-height:1.3em;
+}
+div.summary ul {
+  margin-top:5px;
+  margin-bottom:5px;
+}
 </style>
 {% endblock %}
 {% block content %}
 <header>
   <div id="header-image"><a id="home" href="{{ url_for('index') }}"><div><span>Back to homepage</span></div></a> </div>
 
-  <div class="content">
-
+  <div class="content summary">
     <h1>{{ index.meta.title }}</h1>
     {{ index }}
   </div>
+
 </header>
-<div class="content">
-  {% for article in articles %}
-  <article>
-    <a href="{{ url_for('article', slug=article.slug) }}">
-      <h1><span class="heading">{{ article.title }}</span> <span class="readmore">+++</span></h1>
-    </a>
-    <tt>{{ article.date }} / </tt>{{ article.body | truncate(300) }}
-  </article>
+<div class="content summary">
+
+  <h4>Latest articles:</h4>
+  <ul>
+  {% for article in articles[:5] %}
+    <li><a href="{{ url_for('article', slug=article.slug) }}">{{ article.title }}</a> <span style="color:#aaa">({{article.date}})</span></li>
   {% endfor %}
- </div>
+  </ul>
+
+  <h4>Other pages and posts:</h4>
+  <ul>
+  {% for article in other_articles[:5] %}
+    <li><a href="{{ url_for('article', slug=article.slug) }}">{{ article.title }}</a> <span style="color:#aaa">({{article.date}})</span></li>
+  {% endfor %}
+    <li><a href="/pages/reading-list/">My reading list</a></li>
+  </ul>
+</div>
 {% endblock %}
 

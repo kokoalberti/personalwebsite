@@ -30,6 +30,11 @@ def get_pages_by_tags(*args):
     pages_ = (p for p in pages if tag_set & set(p.meta.get('tags','')))
     return sorted(pages_, reverse=True, key=lambda p: p.meta['date'])
 
+def get_pages_by_missing_tags(*args):
+    tag_set = set(args)
+    pages_ = (p for p in pages if  tag_set - set(p.meta.get('tags','')))
+    return sorted(pages_, reverse=True, key=lambda p: p.meta['date'])
+
 def get_pages_sorted(sort_by='date', reverse=True, page_type='article'):
     pages_ = (p for p in pages if p.meta.get('status','') == 'published' and p.meta.get('type','') == page_type)
     return sorted(pages_, reverse=reverse, key=lambda p: p.meta[sort_by])
@@ -43,7 +48,8 @@ def get_related_pages(page):
 @app.route('/')
 def index():
     index = get_pages_by_slug('index')
-    articles = get_pages_sorted()
+    articles = get_pages_by_tags('geo')
+    other_articles = get_pages_by_tags('other')
     return render_template('index.html', **locals())
 
 @app.route('/articles/<slug>/')

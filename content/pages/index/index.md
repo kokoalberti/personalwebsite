@@ -9,6 +9,10 @@ date: 2018-04-28
 
 **Welcome! You've reached the personal website of Koko Alberti.** 
 
-I am a geographer with a keen interest in geoinformatics, web mapping, and remote sensing. Technical articles and guides on these topics are labelled with a <a href="/tag/geo/">#geo</a> tag.
+I am a geographer/developer based in The Netherlands with a keen interest in geoinformatics, web mapping, and remote sensing. I am available for contract work on the following topics:
 
-There's a few other things that you or I might find interesting, such as my <a href="/pages/reading-list/">reading list</a> and maybe in the future some notes on <a href="/tag/hiking/">#hiking</a> or things I've tried to <a href="/tag/make/">#make</a> with varying degree of success.
+  * Development of web-based map viewers and decision-support systems
+  * Interactive mapping and visualization of geospatial data
+  * Data analysis and processing of environmental datasets
+
+For more information get in touch via Twitter <a href="https://twitter.com/kokoalberti">@kokoalberti</a> or send me an e-mail at <a href="mailto:hello@kokoalberti.com">hello@kokoalberti.com</a>.

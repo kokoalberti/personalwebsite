@@ -53,8 +53,8 @@ Body
 
 body {
 	font-family: 'Source Sans Pro', sans-serif;
-	font-size:1em;
-    line-height:1.5em;
+	font-size:1.4em;
+    line-height:1.4em;
 	color:#000;
 }
 
@@ -128,7 +128,6 @@ header {
     padding-bottom:0px;
 }
 header p {
-    font-size:0.8em;
     margin-bottom:5px;
     margin-top:5px;
 }
@@ -236,7 +235,6 @@ a:active {
     margin: 0 auto;
     padding: 0 2em;
     max-width: 800px;
-    font-size:1.4em;
     line-height:1.5em;
 }
 
