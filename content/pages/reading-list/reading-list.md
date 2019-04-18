@@ -13,6 +13,8 @@ I also find that it motivates me to spend more time reading, and suggestions fro
 
 ### 2019
 
+- The Edge of the World: A Cultural History of the North Sea and the Transformation of Europe (Michael Pye)
+
 - The Wild Places (Robert Macfarlane)
 
 - Notes From A Small Island (Bill Bryson)
