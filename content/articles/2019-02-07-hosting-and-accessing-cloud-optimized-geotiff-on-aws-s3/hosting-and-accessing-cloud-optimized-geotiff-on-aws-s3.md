@@ -3,7 +3,7 @@ description: description
 keywords: eudem eu-dem aws gdal geotiff cloud optimized s3
 type: article
 slug: hosting-and-accessing-cloud-optimized-geotiff-files-on-aws-s3
-tags: [geo, eudem, aws, gdal, geotiff]
+tags: [geo, eudem, aws, gdal, geotiff, dem]
 preview: preview.jpg
 status: published
 date: 2019-02-07
