@@ -13,6 +13,10 @@ I also find that it motivates me to spend more time reading, and suggestions fro
 
 ### 2019
 
+- The Living Mountain (Nan Shepherd)
+
+- De Wereld Gaat aan Vlijt Ten Onder (Max Dendermonde)
+
 - The Edge of the World: A Cultural History of the North Sea and the Transformation of Europe (Michael Pye)
 
 - The Wild Places (Robert Macfarlane)
