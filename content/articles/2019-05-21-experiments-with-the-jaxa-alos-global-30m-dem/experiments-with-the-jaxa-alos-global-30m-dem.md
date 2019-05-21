@@ -170,7 +170,7 @@ And that's now using a predictor can shave 325Gb off your dataset.
 
 ## Making a tile index
 
-The other issue to tackle is the virtual dataset index file contains references to 22126 separate tiles. It's weighs in at 10Mb, but having one is quite essential, as it will allow us to access the entire dataset from anywhere using a single URL endpoint of the VRT index.
+The other issue to tackle is that the virtual dataset index file is around 10Mb in size and contains references to 22126 separate tiles. Having one is quite essential, as it will allow us to access the entire dataset from anywhere using a single URL endpoint of the VRT index.
 
 There is no obvious solution for this, as VRT files don't support a proper spatial index. However, we can actually make an improvised index by including a VRT inside another VRT. We'll split the 22126 GTiff tiles into separate VRT files containing around 100 tiles each, giving us around 200 of these VRT index datasets. 
 
