@@ -50,7 +50,7 @@ div.summary ul {
 
   <h4>Latest articles:</h4>
   <ul>
-  {% for article in articles[:5] %}
+  {% for article in articles %}
     <li><a href="{{ url_for('article', slug=article.slug) }}">{{ article.title }}</a> <span style="color:#aaa">({{article.date}})</span></li>
   {% endfor %}
   </ul>
