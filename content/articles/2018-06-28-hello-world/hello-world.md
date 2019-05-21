@@ -3,7 +3,7 @@ description: Just a short first post to get this website started. Nothing here a
 keywords: flask flatpages
 type: article
 slug: hello-world
-tags: [geo, hiking, make]
+tags: [hello]
 status: published
 date: 2018-06-28
 
