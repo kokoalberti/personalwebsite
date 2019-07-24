@@ -153,4 +153,4 @@ As well as an [example dataset](https://github.com/kokoalberti/postgis-baselayer
 
 Keep an eye on the repository on Github for any news and future updates: [https://github.com/kokoalberti/postgis-baselayers](https://github.com/kokoalberti/postgis-baselayers).
 
-Thanks for reading, and get in touch if you have any questions or comments.
+Thanks for reading, and get in touch via [@kokoalberti](https://twitter.com/kokoalberti) with any questions or comments.
