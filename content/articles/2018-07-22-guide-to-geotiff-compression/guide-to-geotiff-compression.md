@@ -105,7 +105,7 @@ This section dives in to some additional issues and GDAL settings that might hav
 
 ## Tiling
 
-When the creation option ``TILING=YES`` is enabled, data is stored and compressed in blocks (tiled) rather than line by line (stripped). The size of the tiles can be configured using the ``BLOCKXSIZE=n`` and ``BLOCKYSIZE=n`` creation options. Tiling is not much use when you're always reading the entire file or only a single pixel at a time, as respectively all or only one tile or strip will have to be decompressed.
+When the creation option ``TILED=YES`` is enabled, data is stored and compressed in blocks (tiled) rather than line by line (stripped). The size of the tiles can be configured using the ``BLOCKXSIZE=n`` and ``BLOCKYSIZE=n`` creation options. Tiling is not much use when you're always reading the entire file or only a single pixel at a time, as respectively all or only one tile or strip will have to be decompressed.
 
 For accessing subsets though, tiling can make a difference. For example, the grids below show an image with 100 equally sized tiles (left) and the same number of strips (right). To read data from the red subset, the yellow area will have to be decompressed. In the tiled image we will have to decompress only 9 tiles, whereas in the stripped image on the right we'll have to decompress around twice as many strips. 
 
@@ -155,6 +155,7 @@ As for the future, the additions of ZSTD (fast) and LERC (magic) in the latest v
 
 <div class="notes-and-comments">
 <h2 class='notes-and-comments'>Notes and comments</h2>
+
 
 <p class="notes-and-comments">
 Thanks for reading! While there is no comment functionality on this website, I do appreciate any feedback, questions, improvements, and other ideas about this article. Feel free to contact me directly via e-mail at <a href="mailto:koko@geofolio.org">koko@geofolio.org</a>.
