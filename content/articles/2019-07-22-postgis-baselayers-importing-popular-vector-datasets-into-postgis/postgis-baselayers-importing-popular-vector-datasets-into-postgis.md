@@ -12,7 +12,7 @@ This an introductory post about [PostGIS Baselayers](https://github.com/kokoalbe
 
 This post will explain the how and why in some more detail.
 
-Keep an eye on the repository on Github for any news and future updates: [https://github.com/kokoalberti/postgis-baselayers](https://github.com/kokoalberti/postgis-baselayers). If you'd like to request a particular dataset to be included in future releases, please [create an issue](https://github.com/kokoalberti/postgis-baselayers/issues) and I'll see if I can look into it.
+Keep an eye on the repository on Github for any news and future updates: [https://github.com/kokoalberti/postgis-baselayers](https://github.com/kokoalberti/postgis-baselayers). If you'd like to request a particular dataset to be included in future releases, please [create an issue](https://github.com/kokoalberti/postgis-baselayers/issues) or contact me via <a href="https://twitter.com/kokoalberti/">@kokoalberti</a> and I'll see if I can look into it.
 
 # Why
 
