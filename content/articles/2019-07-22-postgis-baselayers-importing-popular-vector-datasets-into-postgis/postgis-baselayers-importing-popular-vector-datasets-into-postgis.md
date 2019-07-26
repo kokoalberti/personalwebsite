@@ -139,7 +139,7 @@ In QGIS you can create a new PostGIS connection to access the data directly:
 
 I won't go into details about accessing data in a PostGIS database from QGIS, but I'm sure there are some tutorials out there that explain this quite well.
 
-# Current datasets and additional info
+# Datasets and Future Plans
 
 Currently a selection of the following datasets are included in PostGIS Baselayers:
 
@@ -149,8 +149,16 @@ Currently a selection of the following datasets are included in PostGIS Baselaye
 * [Natural Earth](https://github.com/kokoalberti/postgis-baselayers/tree/master/app/datasets/naturalearth/)
 * [GRanD Global Reservoirs and Dams](https://github.com/kokoalberti/postgis-baselayers/tree/master/app/datasets/grand/)
 
-As well as an [example dataset](https://github.com/kokoalberti/postgis-baselayers/tree/master/app/datasets/example/) that can help you get started if you're interested in adding other datasets yourself. If you'd like to request a dataset to include, just [create an issue](https://github.com/kokoalberti/postgis-baselayers/issues) in the issue tracker on Github.
+As well as an [example dataset](https://github.com/kokoalberti/postgis-baselayers/tree/master/app/datasets/example/) that can help you get started if you're interested in adding other datasets yourself. 
 
-Keep an eye on the repository on Github for any news and future updates: [https://github.com/kokoalberti/postgis-baselayers](https://github.com/kokoalberti/postgis-baselayers).
+As for future plans, improving some of the following issues would make the app more useful for a bigger audience:
 
-Thanks for reading, and get in touch via [@kokoalberti](https://twitter.com/kokoalberti) with any questions or comments.
+* Adding more datasets! It would be awesome if there really was a decent collection of datasets right at your fingertips. If you'd like to request a dataset to include, just [create an issue](https://github.com/kokoalberti/postgis-baselayers/issues) in the issue tracker on Github.
+* A better upgrade path for when new datasets are added. It would be nice if the application would just give a notice indicating that new datasets are available, or even just update the index automatically and let you install the ones you're interested in.
+* Better documentation and examples. Especially when you first encounter a new dataset it can take a bit of work to figure out what's actually in there and how the data is structured and stored. An extensive set of examples for each dataset would reduce this learning curve, as well as provide lots of code examples for those just getting started with PostGIS and spatial queries.
+* Various improvements to the web application itself. Things like configuring the database to connect to from the browser rather than using an `.env` file, switching between multiple databases, maybe some better management of the tasks running in the background, these sort of things.
+
+Anyway, if you're interested, keep an eye on the repository on Github for any news and future updates: [https://github.com/kokoalberti/postgis-baselayers](https://github.com/kokoalberti/postgis-baselayers).
+
+Thanks for reading, and get in touch via [@kokoalberti](https://twitter.com/kokoalberti) with any questions or comments, or if you'd like to get involved.
+
