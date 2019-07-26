@@ -18,7 +18,7 @@ Keep an eye on the repository on Github for any news and future updates: [https:
 
 Accessibility of spatial datasets is something that's been a bit of a lingering annoyance to me for a long time now. It always takes a lot of time to find data on a particular theme, download it from some silly data portal, wrestle with (sometimes proprietary or ancient) data formats, figure out what is what in a dataset, coerce it into some sort of unified database (or a bunch of random Shapefiles in a directory if you're in a hurry), and then finally you can start out with what you wanted to do in the first place: run spatial queries across a bunch different datasets for analysis or visualization purposes. There must be some better way of going about this.
 
-A few months ago, in a moment of inspiration, I started working on this webapp to automate this process and threw a very rudimentary version of PostGIS Baselayers up on my Twitter account:
+A few months ago, in a moment of inspiration, I started working on a webapp to automate this process and threw a very rudimentary version of PostGIS Baselayers up on my Twitter account:
 
 ![Homepage](./twitter.png)
 
