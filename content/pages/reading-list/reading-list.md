@@ -13,6 +13,8 @@ I also find that it motivates me to spend more time reading, and suggestions fro
 
 ### 2019
 
+- Dune (Frank Herbert)
+
 - Journeys in the Wilderness - A John Muir Reader (John Muir)
 
 - Gulliver's Travels (Jonathan Swift)
