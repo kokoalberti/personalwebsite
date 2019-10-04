@@ -488,15 +488,14 @@ And embed it across the full width of the page and with a fixed height:
 <iframe src="https://s3.eu-central-1.amazonaws.com/old-maps/the-hague-1944/index.html?noscrollzoom"
              style="width:100%;height:350px;border:none;"></iframe>
 
-<div class="notes-and-comments">
-<h2 class='notes-and-comments'>Notes and comments</h2>
+%%THANKS%%
 
-<p class="notes-and-comments">
-You can download the original image from the <a href="http://www.haagsebeeldbank.nl/afbeelding/41ff61b5-2304-4108-83f7-a42a6bb78d87">Municipal Archives (Gemeentearchief) of The Hague</a>.
-</p>
-
-<p class="notes-and-comments">
-Thanks for reading! While there is no comment functionality on this website, I do appreciate any feedback, questions, improvements, and other ideas about this article. Feel free to contact me directly via e-mail at <a href="mailto:koko@geofolio.org">koko@geofolio.org</a>.
-</p>
-
+<div class="notes">
+  <h2>Notes and References</h2>
+  <ul>
+    <li>
+        You can download the original image from the <a href="http://www.haagsebeeldbank.nl/afbeelding/41ff61b5-2304-4108-83f7-a42a6bb78d87">Municipal Archives (Gemeentearchief) of The Hague</a>.
+    </li>
+  </ul>
 </div>
+

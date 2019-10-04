@@ -120,4 +120,5 @@ Run it as `mkprofile.py SRC LON_1 LAT_1 LON_2 LAT_2`. For example:
 
 The web interface which was the reason for diving into this is still a work in progress, so this is it for now. 
 
-Thanks for reading and drop me a line via [@kokoalberti](https://twitter.com/kokoalberti) with any questions, comments, or remarks.
+
+%%THANKS%%

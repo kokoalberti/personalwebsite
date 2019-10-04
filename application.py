@@ -55,6 +55,7 @@ def index():
 @app.route('/articles/<slug>/')
 def article(slug):
     article = get_pages_by_slug(slug)
+    article_html = article.html.replace("%%THANKS%%", '<p class="thanks">Thanks for reading! Get in touch via <a href="https://twitter.com/kokoalberti">@kokoalberti</a> for any questions or comments. I also post new articles there when they are first published.</p>')
     return render_template('article.html', **locals())
 
 @app.route('/articles/<slug>/<path:filename>')

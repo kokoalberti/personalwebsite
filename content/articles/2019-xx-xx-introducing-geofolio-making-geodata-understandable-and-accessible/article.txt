@@ -1,0 +1,95 @@
+<template>
+    <div>
+        <Header />
+        <div class="page">
+            <div class="container">
+                <h2>About Geofolio</h2>
+                <p>
+                    The Geofolio project has grown out of a lingering frustration with the way environmental data is made available by us (the geosciences community at large) to the rest of the world. It is a shame that vast resources (monetary, but also the efforts of scientists across the world) are poured into creating beautiful, informative, and groundbreaking datasets about the state of our Earth. Then what do we do? Publish an article, and dump the data in some data portal or obscure website, lean back, and declare the mission accomplished.
+                </p>
+                <p>
+                    This modus operandi results in large amounts of environmental data being inaccessible to those users who can benefit from it most: domain experts  knowledgable in their field of expertise, and who could use some environmental data to do <i>their</i> job just a little bit better.
+                </p>
+                <p>
+                    Think of aid workers, development and conservation organizations, advisors in the agricultural or water sector, non-profits, activists, journalists, and local goverments and policy makers. Perhaps the type of professionals that take a leap and install QGIS on their computers for the first time because they think GIS and environmental data can help them to do their job better.
+                </p>
+                <p>
+                    Currently, we are letting these users down for the following reasons, each of which are thresholds to adoption of environmental data that Geofolio aims to overcome:
+                </p>
+                <h3>1. Discovery</h3>
+                <p>
+                    Finding a broad overview of what type of thematic data is available at a global or continental scale is nearly impossible. For most practical purposes, Googling for the type of data you're looking for is your best bet. With any luck you'll even find a link to a data portal that just might contain what you're looking for. 
+                </p>
+
+                <h3>2. User Experience</h3>
+                <p> 
+                    The user experience of data portals and websites with environmental datasets is mostly terrible. A selection of personal experiences: Websites are no longer maintained because the project is finished, you'll need to register for the tenth time, some portals use Flash or some other horrible technology stack, there are no decent previews, maps don't have legends, filtering or searching for data is a pain, the website is slow, obscure data formats and filenames are used, metadata and context about what's in the data is missing, direct access via web standards is not possible, navigation and other features of the data portal are not intuitive and you'll find yourself clicking around looking for the most basic of functionality.
+                </p>
+                <p>
+                    Not all of these apply to all data portals, and the situation is getting better, but for some reason my experience with data portals (and that is as someone working in the field) is never smooth, and for non-GIS people it is throwing up a huge barrier to adoption and widespread use of the data.
+                </p>
+
+                <h3>3. Accessibility</h3>
+                <p>
+                    So, a few hours later and you've found some data you're interested in, and you managed to navigate some perilous data portal to actually download some files from your area of interest.
+                </p>
+                <p>
+                    Congratulations, you're close, but yet so far away. Now you need a GIS diploma to be able to do anything with it. This is where you want to do one (or more) of the following: convert the data to a format you can actually work with, possibly georeference the data, import it into some GIS system of your choice, start merging tiles that overlap your area of interest, crop out your area of interest, warp it all to the same spatial reference system. Now you're feeling good and start thinking about some analysis tasks.
+                </p>
+                <p>
+                    And then your pixels aren't aligned, one of the datasets is not georeferenced properly, the legend contains 57 classes even though your in area of interest clearly not all of them apply, why is the background not transparent, and why are there so many values of -9999? Why is my raster all white? Why are the oceans pink and the forests blue? Why is Greenland the size of Africa? Why are my area and distance calculations in degrees, I want them in meters! 
+                </p>
+                <p>
+                    Sure, these are problems that someone with a GIS diploma can solve, but for the rest of the world they are a barrier to adoption.
+                </p>
+
+                <h3>4. Analysis</h3>
+                <p>
+                    There is no better time for data scientists and analysts working with geospatial data. We have phenomenal tools like GDAL and QGIS at our disposal, and we can write code to do exactly what we want to do in Python and R, each with a vast ecosystem for scientific analysis packages that can be installed with a few commands.
+                </p>
+
+            </div>
+        </div>
+        <Footer />
+    </div>
+</template>
+
+<script>
+  import Header from '@/components/generic/Header.vue'
+  import Footer from '@/components/generic/Footer.vue'
+
+  export default {
+    name: 'about',
+    components: {
+      Header, Footer
+    }
+  }
+</script>
+
+<style scoped>
+
+div.page {
+    font-size:1.5em;
+    color:#666;
+}
+h1 {
+    font-size:1.3em;
+    font-weight:600;
+    margin-top:15px;
+}
+
+h2 {
+    font-size:1.2em;
+    font-weight:600;
+    margin-top:15px;
+}
+
+h3 {
+    font-size:1.05em;
+    font-weight:600;
+    margin-top:15px;
+}
+p {
+    line-height:1.4em;
+}
+</style>

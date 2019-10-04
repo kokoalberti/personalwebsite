@@ -35,26 +35,18 @@ The extent of the affected area looks to cover around 240 hectares (2.4sq.km), a
 <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
 <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
 
-<div class="notes-and-comments">
-<h2 class='notes-and-comments'>Updates</h2>
-<p class="notes-and-comments">
-    28 Jan: Updated the images with some more details, added additional dams on the maps.
-</p>
-<p class="notes-and-comments">
-    28 Jan: Editing for less text, fix typo in image header, added presentation link.
-</p>
-<h2 class='notes-and-comments'>Notes and comments</h2>
 
-<p class="notes-and-comments">
-Have a look at this article by Dave Petley on The Landslide Blog for more information and analysis: <a href="https://blogs.agu.org/landslideblog/2019/01/27/brumadinho-1/">https://blogs.agu.org/landslideblog/2019/01/27/brumadinho-1/</a>. For official communications from Vale see their <a href="http://www.vale.com/EN/aboutvale/reports/atualizacoes_brumadinho_home/Pages/default.aspx">press release</a> page.
-</p>
+%%THANKS%%
 
-<p class="notes-and-comments">
-The image of Dam 1 is from <a href="https://www.slideshare.net/comcbhvelhas/barragens-de-mineracaovale">this presentation</a> on SlideShare. The other images are by <a href="https://twitter.com/OLjohnel">John O'Leary</a> and by Antonio Lacerda via <a href="https://www.theguardian.com/world/2019/jan/26/hundreds-feared-dead-brazil-dam-collapse-releases-mud-tide">this article</a> in The Guardian.
-</p>
-
-<p class="notes-and-comments">
-Thanks for reading! While there is no comment functionality on this website, I do appreciate any feedback, questions, improvements, and other ideas about this article. Feel free to contact me directly via e-mail at <a href="mailto:koko@geofolio.org">koko@geofolio.org</a>.
-</p>
-
+<div class="notes">
+  <h2>Notes and References</h2>
+  <ul>
+    <li>Update 28 Jan: Updated the images with some more details, added additional dams on the maps.</li>
+    <li>Update 28 Jan: Editing for less text, fix typo in image header, added presentation link.</li>
+    <li>Have a look at this article by Dave Petley on The Landslide Blog for more information and analysis: <a href="https://blogs.agu.org/landslideblog/2019/01/27/brumadinho-1/">https://blogs.agu.org/landslideblog/2019/01/27/brumadinho-1/</a>. For official communications from Vale see their <a href="http://www.vale.com/EN/aboutvale/reports/atualizacoes_brumadinho_home/Pages/default.aspx">press release</a> page.</li>
+    <li>The image of Dam 1 is from <a href="https://www.slideshare.net/comcbhvelhas/barragens-de-mineracaovale">this presentation</a> on SlideShare. The other images are by <a href="https://twitter.com/OLjohnel">John O'Leary</a> and by Antonio Lacerda via <a href="https://www.theguardian.com/world/2019/jan/26/hundreds-feared-dead-brazil-dam-collapse-releases-mud-tide">this article</a> in The Guardian.</li>
+    <li></li>
+    <li></li>
+  </ul>
 </div>
+

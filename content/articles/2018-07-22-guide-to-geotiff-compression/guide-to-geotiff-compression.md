@@ -153,30 +153,20 @@ Most importantly, keep experimenting and use the techniques in this article to f
 
 As for the future, the additions of ZSTD (fast) and LERC (magic) in the latest versions of GDAL are really promising, I can't wait to put them to the test in some real world scenarios.
 
-<div class="notes-and-comments">
-<h2 class='notes-and-comments'>Notes and comments</h2>
 
+%%THANKS%%
 
-<p class="notes-and-comments">
-Thanks for reading! While there is no comment functionality on this website, I do appreciate any feedback, questions, improvements, and other ideas about this article. Feel free to contact me directly via e-mail at <a href="mailto:koko@geofolio.org">koko@geofolio.org</a>.
-</p>
-
-<p class="notes-and-comments">
-The test files are an extract from <a href="http://soilgrids.org">soilgrids.org</a> (Byte), a DEM extracted from an SRTM tile (Int16), and a hi-res DEM from the USGS National Elevation Dataset (Float32). The test files can be downloaded from <a href="https://s3.us-east-2.amazonaws.com/geotiff-benchmark-sample-files/geotiff_sample_files.tar.gz">here</a>.
-</p>
-
-<p class="notes-and-comments">
-There are a few other blog posts on this subject that you can have a look at for additional information:
-</p>
-
-<ul class="notes-and-comments">
-<li><a href="http://openterrain.tumblr.com/post/117553678231/gdal-compression-options-against-ned-data">GDAL compression options against NED data</a></li>
-<li><a href="http://www.digital-geography.com/geotiff-compression-comparison/">GeoTIFF compression comparison</a></li>
-<li><a href="http://blog.cleverelephant.ca/2015/02/geotiff-compression-for-dummies.html">GeoTIFF compression for dummies</a></li>
-</ul>
-
-<p class="notes-and-comments">
-The code for the benchmarks is available at: <a href="https://www.github.com/kokoalberti/geotiff-benchmark">https://www.github.com/kokoalberti/geotiff-benchmark</a>
-</p>
-
+<div class="notes">
+  <h2>Notes and References</h2>
+  <ul>
+    <li>
+      [1] The test files are: an extract from <a href="http://soilgrids.org">soilgrids.org</a> (Byte), a DEM extracted from an SRTM tile (Int16), and a hi-res DEM from the USGS National Elevation Dataset (Float32). The test files can be downloaded from <a href="https://s3.us-east-2.amazonaws.com/geotiff-benchmark-sample-files/geotiff_sample_files.tar.gz">here</a>.
+    </li>
+    <li>
+      [2] There are a few other blog posts on this subject that you can have a look at for additional information: <a href="http://openterrain.tumblr.com/post/117553678231/gdal-compression-options-against-ned-data">GDAL compression options against NED data</a> by Rob Emanuele, <a href="http://www.digital-geography.com/geotiff-compression-comparison/">GeoTIFF compression comparison</a> by Kersten Clauss, and <a href="http://blog.cleverelephant.ca/2015/02/geotiff-compression-for-dummies.html">GeoTIFF compression for dummies</a> by Paul Ramsey.
+    </li>
+    <li>
+      [3] The code for the benchmarks is available at: <a href="https://www.github.com/kokoalberti/geotiff-benchmark">https://www.github.com/kokoalberti/geotiff-benchmark</a>
+    </li>
+  </ul>
 </div>

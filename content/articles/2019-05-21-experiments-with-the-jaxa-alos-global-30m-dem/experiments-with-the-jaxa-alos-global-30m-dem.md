@@ -253,35 +253,22 @@ To make sure everything works as intended lets download a 30m DEM for of Califor
 
 ![California 30m DEM](./california-dem.jpg)
 
+%%THANKS%%
 
-<div class="notes-and-comments">
+<div class="notes">
+<h2>Acknowledgements</h2>
+<ul><li>Special thanks to <a href="https://opentopography.org">OpenTopography</a> for making this dataset (and all the other ones they have) available through their excellent service.</li></ul>
+    <h2>Notes</h2>
+<ul>
+    <li>After going through this exercise it occurred to me that it might also be possible to use GDAL <tt>/vsicurl/</tt> to read directly from the source, and write the optimized tile directly to its final S3 destination using <tt>/vsis3/</tt>, without any intermediary step or needing large amounts of scratch space. This did not work however. The <tt>/vsis3/</tt> <a href="https://www.gdal.org/gdal_virtual_file_systems.html#gdal_virtual_file_systems_vsis3">documentation</a> offers an explanation: only sequential writing is possible, "so in particular direct writing of GeoTIFF files with the GTiff driver is not supported". <s>If anyone knows a way around this I'd be curious, so let me know.</s> Found this in the meantime: <a href="https://gist.github.com/vincentsarago/c31f0db27b128b9d50797aacbe9229b0">https://gist.github.com/vincentsarago/c31f0db27b128b9d50797aacbe9229b0</a>. Haven't tried but looks promising.
 
-<h2 class='notes-and-comments'>Afterword on direct writing using <tt>/vsis3/</tt></h2>
-<p class="notes-and-comments">
-After going through this exercise it occurred to me that it might also be possible to use GDAL <tt>/vsicurl/</tt> to read directly from the source, and write the optimized tile directly to its final S3 destination using <tt>/vsis3/</tt>, without any intermediary step or needing large amounts of scratch space. 
-</p>
-<p class="notes-and-comments">
-This did not work however. The <tt>/vsis3/</tt> <a href="https://www.gdal.org/gdal_virtual_file_systems.html#gdal_virtual_file_systems_vsis3">documentation</a> offers an explanation: only sequential writing is possible, "so in particular direct writing of GeoTIFF files with the GTiff driver is not supported". If anyone knows a way around this I'd be curious, so let me know.
-</p>
+        </li>
+    </ul>
 
-<h2 class='notes-and-comments'>Notes and comments</h2>
-<p class="notes-and-comments">
-Thanks for reading! While there is no comment functionality on this website, I do appreciate any feedback, questions, improvements, and other ideas about this article. Feel free to contact me directly via e-mail at <a href="mailto:koko@geofolio.org">koko@geofolio.org</a>.
-</p>
-
-<h2 class='notes-and-comments'>Special thanks</h2>
-<p class="notes-and-comments">
-Special thanks to opentopography.org for making this dataset (and all the other ones they have) available through their excellent service.
-</p>
-
-<h2 class='notes-and-comments'>References and attribution</h2>
-<p class="notes-and-comments">
-J. Takaku, T. Tadono, K. Tsutsui: <a href="http://www.int-arch-photogramm-remote-sens-spatial-inf-sci.net/XL-4/243/2014/isprsarchives-XL-4-243-2014.pdf">Generation of High Resolution Global DSM from ALOS PRISM</a>, The International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences, pp.243-248, Vol. XL-4, ISPRS TC IV Symposium, Suzhou, China, 2014.
-</p>
-<p class="notes-and-comments">
-T. Tadono, H. Ishida, F. Oda, S. Naito, K. Minakawa, H. Iwamoto : Precise Global DEM Generation By ALOS PRISM, ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, pp.71-76, Vol.II-4, 2014. https://doi.org/10.5069/G94M92HB
-</p>
-<p class="notes-and-comments">
-This work is based on services provided by the <a href="https://opentopography.org">OpenTopography Facility</a> with support from the National Science Foundation under NSF Award Numbers 1557484, 1557319, and 1557330.
-</p>
+  <h2>References</h2>
+  <ul>
+    <li>[1] J. Takaku, T. Tadono, K. Tsutsui: <a href="http://www.int-arch-photogramm-remote-sens-spatial-inf-sci.net/XL-4/243/2014/isprsarchives-XL-4-243-2014.pdf">Generation of High Resolution Global DSM from ALOS PRISM</a>, The International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences, pp.243-248, Vol. XL-4, ISPRS TC IV Symposium, Suzhou, China, 2014.</li>
+    <li>[2] T. Tadono, H. Ishida, F. Oda, S. Naito, K. Minakawa, H. Iwamoto : Precise Global DEM Generation By ALOS PRISM, ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, pp.71-76, Vol.II-4, 2014. https://doi.org/10.5069/G94M92HB</li>
+    <li>[3] This work is based on services provided by the <a href="https://opentopography.org">OpenTopography Facility</a> with support from the National Science Foundation under NSF Award Numbers 1557484, 1557319, and 1557330.</li>
+  </ul>
 </div>

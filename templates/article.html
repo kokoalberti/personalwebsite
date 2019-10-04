@@ -21,7 +21,7 @@
 
   <div class="content">
     <p>
-      <span style="float:right;color:#666;"><a href="https://twitter.com/kokoalberti" style="font-weight:700;color:#ccc;">@kokoalberti</a></span>
+      <span style="float:right;color:#666;"><a href="https://twitter.com/kokoalberti" style="font-weight:700;">@kokoalberti</a></span>
       <a href="{{ url_for('index') }}">kokoalberti.com</a>/articles/
     </p>
     <h1>{{ article.title }}</h1>
@@ -38,22 +38,26 @@
       </span>
       
     </p>
+
   </div>
 </header>
 <div class="content">
-  <article>
-    <!--
-    {% if 'geofolio' in article.meta.tags %}
-    <p style='color:#999;'>
-      
-      Shameless plug ahead... This article was written as part of building <a href="https://geofolio.org">Geofolio</a>, a project I'm working that aims to make 
-      geodata available and understandable for everyone. Have a look and let me know what you think!
-      
+    {% if 'geo' in article.meta.tags %}
+    <p style='color:#333;background-color:rgb(255, 255, 228);padding:10px;font-size:0.8em;border:1px solid #fec615;line-height:1.6em;margin-bottom:0px;'>
+      <a href="https://geofolio.org"><img src="/static/gfx/geofolio-factsheets.svg" style="float:right;height:140px;border:0px;" /></a>
+      Shameless plug ahead! This article was (probably) written in the course of building <strong><a href="https://geofolio.org/">Geofolio</a></strong>, which is a project I've been working on that automagically generates factsheets for any place on Earth. It contains lots of maps and charts, all powered by open data. Check it out at <strong><a href="https://geofolio.org">https://geofolio.org/</a></strong> or follow <a href="https://twitter.com/geofolio">@geofolio</a> on Twitter for news and updates.
     </p>
-    <hr/>
     {% endif %}
-  -->
-  	{{ article }}
-  </article>
+
+    <article>
+    	{{ article_html|safe }}
+    </article>
+
+
+    {% if 'geo' in article.meta.tags %}
+    
+    {% endif %}
+    
+
 </div>
 {% endblock %}

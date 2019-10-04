@@ -201,17 +201,14 @@ Resulting in the following (7400 by 10000 pixels) file:
 
 Well, you get the idea... the possibilities are endless!
 
-<div class="notes-and-comments">
-<h2 class='notes-and-comments'>Notes and comments</h2>
+%%THANKS%%
 
-<p class="notes-and-comments">
-EU-DEM v1.1 is produced using Copernicus data and information funded by the European Union.
-</p>
-<p class="notes-and-comments">
-I used a temporary EC2 instance for downloading the tiles, running GDAL commands, and syncing everything back to S3. For large datasets this is highly advisable and much faster than doing anything locally.
-</p>
-<p class="notes-and-comments">
-Thanks for reading! While there is no comment functionality on this website, I do appreciate any feedback, questions, improvements, and other ideas about this article. Feel free to contact me directly via e-mail at <a href="mailto:koko@geofolio.org">koko@geofolio.org</a>.
-</p>
-
+<div class="notes">
+  <h2>Notes and References</h2>
+  <ul>
+    <li>[1] EU-DEM v1.1 is produced using Copernicus data and information funded by the European Union.</li>
+    <li>[2] I used a temporary EC2 instance for downloading the tiles, running GDAL commands, and syncing everything back to S3. For large datasets this is highly advisable and much faster than doing anything locally.</li>
+    <li></li>
+    <li></li>
+  </ul>
 </div>

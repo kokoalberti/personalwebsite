@@ -162,5 +162,4 @@ Improving some of the following issues would make the app more useful for a bigg
 
 If you're interested, keep an eye on the repository on Github for any news and future updates: [https://github.com/kokoalberti/postgis-baselayers](https://github.com/kokoalberti/postgis-baselayers).
 
-Thanks for reading, and get in touch via [@kokoalberti](https://twitter.com/kokoalberti) with any questions or comments, or if you'd like to get involved.
-
+%%THANKS%%

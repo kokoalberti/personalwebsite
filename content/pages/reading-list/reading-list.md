@@ -7,7 +7,7 @@ status: published
 date: 2019-01-24
 updated: 2019-07-22
 
-This page contains a reading list that I've decided to keep track of since the end of 2017. Since I've enjoyed and found <a href="https://www.gatesnotes.com/About-Bill-Gates/Summer-Books-2018">inspiration</a> <a href="https://sivers.org/book">in</a> <a href="https://forrestbrazeal.com/2017/12/03/the-100-books-challenge-full-reading-list/">other</a> <a href="https://patrickcollison.com/svhistory">people's</a> <a href="https://meltingasphalt.com/what-im-reading/">reading</a> <a href="https://medium.com/@rabois/reading-list-604c88ecefa4">lists</a>, I thought it might be fun to keep track of my own reading for a while.
+This page contains a reading list that I've decided to keep track of since the end of 2017. Since I've enjoyed and <a href="http://benbrostoff.github.io/books/">found</a> <a href="https://www.gatesnotes.com/About-Bill-Gates/Summer-Books-2018">inspiration</a> <a href="https://sivers.org/book">in</a> <a href="https://forrestbrazeal.com/2017/12/03/the-100-books-challenge-full-reading-list/">other</a> <a href="https://patrickcollison.com/svhistory">people's</a> <a href="https://meltingasphalt.com/what-im-reading/">reading</a> <a href="https://medium.com/@rabois/reading-list-604c88ecefa4">lists</a>, I thought it might be fun to keep track of my own reading for a while.
 
 I also find that it motivates me to spend more time reading, and suggestions from other people are nice because they fall outside of the filter bubble of inspiration that usually greets you on the homepage of your favorite digital bookstore.
 

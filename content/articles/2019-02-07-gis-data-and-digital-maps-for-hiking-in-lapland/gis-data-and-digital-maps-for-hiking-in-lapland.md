@@ -194,41 +194,25 @@ The equivalent overlays for your Garmin device:
 - <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/garmin_kungsleden_topo.kmz">Kungsleden Topo Fjallkartan (Garmin Overlay)</a> (12.0Mb, KMZ)
 - <a href="https://s3.eu-central-1.amazonaws.com/kungsleden-hiking-maps-and-data/garmin_kungsleden_sat.kmz">Kungsleden Satellite (Garmin Overlay)</a> (7.6Mb, KMZ)
 
-# Licensing
 
-Please we aware of the licensing requirements of the data sources if you intend to use them. The <a href="https://s2maps.eu">Sentinel 2 cloudless</a> data by <a href="https://eox.at">EOX</a> is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>, the Swedish Fjallkartan maps by Lantmateriet are in the public domain and available under a <a href="https://creativecommons.org/share-your-work/public-domain/cc0/">CC-0 License</a>, and see <a href="https://land.copernicus.eu/imagery-in-situ/eu-dem/eu-dem-v1.1?tab=metadata">this page</a> for licensing information for the EU-DEM 1.1 dataset.
+%%THANKS%%
 
-# Acknowledgements
-
-Thanks to EOX for creating the wonderful Sentinel-2 cloudless dataset and Landmateriet for their excellent mountain maps of Sweden.
-
-<div class="notes-and-comments">
-<h2 class='notes-and-comments'>Disclaimer</h2>
-<p class="notes-and-comments">
-While every attempt has been made to make the data as accurate as possible, I can't guarantee that it's actually any good for anything. I hope you find it useful for preparation and making some maps using your favourite GIS programme, and don't forget to check out the data sources yourself to ensure that they're fit for your intended purpose.
-</p>
-<p class="notes-and-comments">
-If you're actually venturing out into these areas, prepare yourself properly: bring official and up-to-date maps, know what you're getting yourself into, and most certainly don't rely on things with batteries and LCD screens to find the way there (or back) for you.
-</p>
-
-<h2 class='notes-and-comments'>Notes and comments</h2>
-<p class="notes-and-comments">
-Thanks for reading! While there is no comment functionality on this website, I do appreciate any feedback, questions, improvements, and other ideas about this article. Feel free to contact me directly via e-mail at <a href="mailto:koko@geofolio.org">koko@geofolio.org</a>.
-</p>
-
-<h2 class='notes-and-comments'>References</h2>
-<p class="notes-and-comments">
-[1] Sentinel-2 cloudless - <a href="https://s2maps.eu">https://s2maps.eu</a> by <a href="https://eox.at/">EOX IT Services GmbH</a> (Contains modified Copernicus Sentinel data 2016 & 2017)
-</p>
-<p class="notes-and-comments">
-[2] European Digital Elevation Model (EU-DEM), version 1.1 is available via <a href="https://land.copernicus.eu/imagery-in-situ/eu-dem/eu-dem-v1.1">https://land.copernicus.eu/imagery-in-situ/eu-dem/eu-dem-v1.1</a>
-</p>
-<p class="notes-and-comments">
-[3] Lantmateriet data available via <a href="https://opendata.lantmateriet.se/">https://opendata.lantmateriet.se/</a> and <a href="https://lantmateriet.se/">https://lantmateriet.se/</a>
-</p>
-<p class="notes-and-comments">
-[4] See <a href="https://forums.gpsfiledepot.com/index.php?topic=2832.0">this topic</a> on gpsfiledepot.com for more info on the Garmin map format, as well as this Garmin support page about <a href="https://support.garmin.com/en-IE/?faq=FtEncUXbaE0xE04yZ7gTq5">custom map limitations</a>.
-</p>
-
-
+<div class="notes">
+    <h2>Licensing</h2>
+    <ul><li>Please we aware of the licensing requirements of the data sources if you intend to use them. The <a href="https://s2maps.eu">Sentinel 2 cloudless</a> data by <a href="https://eox.at">EOX</a> is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>, the Swedish Fjallkartan maps by Lantmateriet are in the public domain and available under a <a href="https://creativecommons.org/share-your-work/public-domain/cc0/">CC-0 License</a>, and see <a href="https://land.copernicus.eu/imagery-in-situ/eu-dem/eu-dem-v1.1?tab=metadata">this page</a> for licensing information for the EU-DEM 1.1 dataset.</li></ul>
+  <h2>Acknowledgements</h2>
+  <ul><li>Thanks to EOX for creating the wonderful Sentinel-2 cloudless dataset and Landmateriet for their excellent mountain maps of Sweden.</li></ul>
+  <h2>Disclaimer</h2>
+  <ul><li>While every attempt has been made to make the data as accurate as possible, I can't guarantee that it's actually any good for anything. I hope you find it useful for preparation and making some maps using your favourite GIS programme, and don't forget to check out the data sources yourself to ensure that they're fit for your intended purpose.</li>
+    <li>If you're actually venturing out into these areas, prepare yourself properly: bring official and up-to-date maps, know what you're getting yourself into, and most certainly don't rely on things with batteries and LCD screens to find the way there (or back) for you.</li>
+    </ul>
+  <h2>Notes and References</h2>
+  <ul>
+    <li>[1] Sentinel-2 cloudless - <a href="https://s2maps.eu">https://s2maps.eu</a> by <a href="https://eox.at/">EOX IT Services GmbH</a> (Contains modified Copernicus Sentinel data 2016 & 2017)</li>
+    <li>[2] European Digital Elevation Model (EU-DEM), version 1.1 is available via <a href="https://land.copernicus.eu/imagery-in-situ/eu-dem/eu-dem-v1.1">https://land.copernicus.eu/imagery-in-situ/eu-dem/eu-dem-v1.1</a></li>
+    <li>[3] Lantmateriet data available via <a href="https://opendata.lantmateriet.se/">https://opendata.lantmateriet.se/</a> and <a href="https://lantmateriet.se/">https://lantmateriet.se/</a></li>
+    <li>[4] See <a href="https://forums.gpsfiledepot.com/index.php?topic=2832.0">this topic</a> on gpsfiledepot.com for more info on the Garmin map format, as well as this Garmin support page about <a href="https://support.garmin.com/en-IE/?faq=FtEncUXbaE0xE04yZ7gTq5">custom map limitations</a>.</li>
+  </ul>
 </div>
+
+

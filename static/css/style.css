@@ -142,12 +142,11 @@ Article
 article p {
     color:#000;
     margin-top:12px;
-    margin-bottom:12px;
 }
 article {
     padding-top:5px;
     padding-bottom:5px;
-
+    margin-bottom:20px;
 }
 article h1 {
     font-size:1.25em;
@@ -238,6 +237,46 @@ a:active {
     line-height:1.5em;
 }
 
+div.notes {
+    
+}
+div.notes h2 {
+  color:#888;
+  font-size:0.9em;
+  margin:0px;
+  margin-bottom:10px;
+}
+div.notes ul {
+  margin:0px;
+  padding:0px;
+  list-style:none;
+}
+div.notes ul.twocol {
+  -webkit-column-count:2;
+  -moz-column-count:2;
+  column-count:2;
+}
+div.notes ul li {
+  color:#888;
+  font-size:0.75em;
+  line-height:1.3em;
+  margin:0px;
+  margin-bottom:10px;
+  padding-bottom:0px;
+}
+div.notes ul li a {
+  text-decoration:none;
+  text-decoration-color:#aaa;
+}
 
+p.thanks {
+    color:#333;
+    background-color:rgb(255, 255, 228);
+    padding:10px;
+    font-size:0.8em;
+    border:1px solid #fec615;
+    line-height:1.6em;
+    margin-bottom:10px;
+}
 
 
