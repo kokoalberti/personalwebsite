@@ -11,7 +11,17 @@ This page contains a reading list that I've decided to keep track of since the e
 
 I also find that it motivates me to spend more time reading, and suggestions from other people are nice because they fall outside of the filter bubble of inspiration that usually greets you on the homepage of your favorite digital bookstore.
 
+### 2020
+
+- Underland (Robert Macfarlane)
+
 ### 2019
+
+- Where Wizards Stay Up Late - The Origins of The Internet (Katie Hafner and Matthew Lyon)
+
+- Valley of Genius - The Uncensored History of Silicon Valley (Adam Fisher)
+
+- Climate Change - What Everyone Needs to Know (Joseph Romm)
 
 - Dune (Frank Herbert)
 
