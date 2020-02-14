@@ -103,22 +103,33 @@ Run it as `mkprofile.py SRC LON_1 LAT_1 LON_2 LAT_2`. For example:
         6.173 46.512 8.652 44.399 \
         --csv profile.csv
     Reading and warping data into profile swath...
-    Created 245800m profile with 2458 samples.
+    Created 304500m profile with 3045 samples.
     Saved as profile.csv
     $ head -10 profile.csv 
     dist,value
-    0,1406.091552734375
-    100,1379.4495849609375
-    200,1365.6845703125
-    300,1343.8507080078125
-    400,1333.7431640625
-    500,1322.367919921875
-    600,1314.52978515625
-    700,1309.57275390625
-    800,1302.2603759765625
+    0,1397.0989990234375
+    100,1360.830322265625
+    200,1343.21337890625
+    300,1339.267822265625
+    400,1321.2838134765625
+    500,1315.2886962890625
+    600,1312.7418212890625
+    700,1311.404541015625
+    800,1305.251220703125
     $
+
+With again the reminder that the data is in a Requester Pays bucket, meaning that you have the set the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables to be able to access the data.
 
 The web interface which was the reason for diving into this is still a work in progress, so this is it for now. 
 
 
 %%THANKS%%
+
+
+<div class="notes">
+<h2>Error in mkprofile script</h2>
+<ul><li>
+    Thanks to Bertrand Gervais for pointing out a pretty bad error in the setting up the projection string in the mkprofile script. I didn't actually use the script myself while writing the article so it wasn't tested very well. The error has <a href="https://github.com/kokoalberti/geocmd/commit/d8bfde0d5e2a12cea4f098983c3cf9cad2901222">been fixed</a> in the meantime, and I've updated the article updated with the correct results.
+</li></ul>
+
+</div>
