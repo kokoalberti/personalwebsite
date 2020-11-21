@@ -13,6 +13,8 @@ I also find that it motivates me to spend more time reading, and suggestions fro
 
 ### 2020
 
+- Sid Meier's Memoir!: A Life in Computer Games (Sid Meier)
+
 - Men and the Fields (Adrian Bell)
 
 - Project Mars (Willy Ley and Wernher von Braun)
