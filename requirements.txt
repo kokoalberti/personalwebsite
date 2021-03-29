@@ -1,7 +1,7 @@
 Flask==1.0.2
 Flask-FlatPages==0.6
 Frozen-Flask==0.15
-Pygments==2.2.0
+Pygments==2.7.4
 python-dotenv==0.9.0
 click==6.7
 itsdangerous==0.24
